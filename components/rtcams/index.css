@@ -1,0 +1,78 @@
+@import "../../index.css";
+
+.cams-container {
+  width: 100%;
+  overflow: visible;
+}
+
+#camerasList {
+  width: 100%;
+}
+
+#camerasList select{
+  width: 100%;
+  font-size: 10px;
+  padding: 10px 0px;
+  font-weight: bold;
+}
+
+#camerasListOptions button{
+  width: 100%;
+}
+
+
+.cam {
+  width: 50%;
+  z-index: 1000;
+}
+
+.cam-div {
+  width: 25%;
+}
+
+.cam {
+  transition: all .3s ease-in-out;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.cam-odd:hover {
+  z-index: 2000;
+  transform: scale(2) translate(25%, 0);
+}
+.cam-even:hover {
+  z-index: 2000;
+  transform: scale(2) translate(-25%, 0);
+}
+.cam-first-odd:hover {
+    z-index: 2000;
+    transform: scale(2) translate(25%, 25%);
+}
+.cam-first-even:hover {
+  z-index: 2000;
+    transform: scale(2) translate(-25%, 25%);
+}
+.cam-last-odd:hover {
+  z-index: 2000;
+    transform: scale(2) translate(25%, -25%);
+}
+.cam-last-even:hover {
+  z-index: 2000;
+    transform: scale(2) translate(-25%, -25%);
+}
+.cam-street-view-link {
+  width: 100%;
+  text-align: center;
+}
+.timer-container {
+  position: relative;
+  display:inline-block;
+  width:100%;
+  height:5px;
+}
+.timer-bar {
+  position:relative;
+  width:0%;
+  height: 100%;
+  background-color:white;
+}

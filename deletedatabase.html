@@ -1,0 +1,20 @@
+<html lang="en">
+  <head>
+    <script src="Database.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+    <script src="JSONP.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+    <title>Delete IONIC.416 Database
+  </head>
+<body>
+  <script>
+  Database.deleteDatabase("ionic").then(result => {
+    Database.deleteDatabase("ionic").then(result => {
+      alert ("IONIC.416 database deleted.");
+    }).catch (error => {
+      alert ("Error deleting database: "+error);
+    })
+  }).catch (error => {
+    alert ("Error deleting database: "+error);
+  })
+  </script>
+</body>
+</html>

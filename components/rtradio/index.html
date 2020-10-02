@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="IONIC Research Labs, a division of TSG">
+    <title>IONIC Realtime Streaming Radio Component</title>
+    <script src="../../config.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+    <script src="audio-stream-meter.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+    <script src="index.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+    <link href="index.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8"></link>
+  </head>
+  <body>
+    <div class="component-container">
+      <div id="stream-container1" class="stream-container">
+        <div class="radio_header"><img src="toronto_fire.png" width="50" height="50"><br/>
+          <span class="radio_title">Toronto Fire Services A.D.</span></div>
+        <audio controls="true" preload="none" id="stream1" name="stream1">
+          <source src="https://broadcastify.cdnstream1.com/3140" type="audio/mpeg" crossorigin="anonymous">
+        </audio>
+        <div class="peakmeter-container">
+          <div id="peakmeter1" class="peakmeter"></div>
+        </div>
+      </div>
+      <div id="stream-container2" class="stream-container">
+        <div class="radio_header"><img src="toronto_ems.png" width="50" height="50"><br/>
+        <span class="radio_title">Toronto Paramedic Services</span></div>
+        <audio controls="true" preload="none" id="stream2" name="stream2" crossorigin="anonymous">
+          <source src="https://broadcastify.cdnstream1.com/32330" type="audio/mpeg">
+        </audio>
+        <div class="peakmeter-container">
+          <div id="peakmeter2" class="peakmeter"></div>
+        </div>
+      </div>
+      <div id="stream-container3" class="stream-container">
+        <div class="radio_header"><img src="toronto_transit.png" width="50" height="50"><br/>
+        <span class="radio_title">Toronto Transit Commission</span></div>
+        <audio controls="true" preload="none" id="stream3" name="stream3">
+          <source src="https://broadcastify.cdnstream1.com/31629" type="audio/mpeg" crossorigin="anonymous">
+        </audio>
+        <div class="peakmeter-container">
+          <div id="peakmeter3"  class="peakmeter"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

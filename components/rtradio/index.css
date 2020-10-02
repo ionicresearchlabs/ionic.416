@@ -1,0 +1,93 @@
+@import "../../index.css";
+/* @import "./playerStyle.css"; */
+
+html, body {
+  font-size: 1em;
+  font-family: "IBM Plex Mono", monospace;
+
+}
+
+.component-header {
+  font-size: 7vw;
+  line-height: 0px;
+  text-align: center;
+  width: 100%;
+
+}
+
+audio {
+  height: 30px;
+  width: 100vw;
+}
+
+.peakmeter-container {
+  width:100%;
+  height:5px;
+  background-color:#141414
+}
+
+.peakmeter {
+  height:5px;
+  background-color:#FFFFFF;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.radio_header {
+  width:100%;
+  text-align: center;;
+}
+
+.radio_title {
+  font-size: 6vw;
+  vertical-align: middle;
+}
+
+.stream-container {
+  width: 100%;
+  display: inline-block;
+}
+
+.col-half {
+  width: 50%;
+  float: left;
+  overflow-wrap: anywhere;
+  min-width: 50px;
+  display: inline-block;
+}
+
+.col-full {
+  width: 100%;
+  float: left;
+  overflow-wrap: anywhere;
+  min-width: 50px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1000px) {
+  [class*="col-"] {
+    width: 33.333%;
+    min-width: 200px;
+    float: left;
+    display: inline-block;
+  }
+
+  html, body {
+    height: 115px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  [class*="col-"] {
+    width: 100%;
+    min-width: 200px;
+    float: left;
+    display: inline-block;
+  }
+
+  html, body {
+    height: 315px;
+  }
+}

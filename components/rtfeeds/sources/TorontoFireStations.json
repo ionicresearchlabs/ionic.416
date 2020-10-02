@@ -1,0 +1,512 @@
+[
+  {
+    "latitude": "43.7901552",
+    "longitude": "-79.3935912",
+    "stationId": 111,
+    "address": "3300 Bayview Avenue"
+  },
+  {
+    "latitude": "43.7763748",
+    "longitude": "-79.44423740000002",
+    "stationId": 112,
+    "address": "5700 Bathurst Street"
+  },
+  {
+    "latitude": "43.7919084",
+    "longitude": "-79.35065129999998",
+    "stationId": 113,
+    "address": "700 Seneca Hill Drive"
+  },
+  {
+    "latitude": "43.7726013",
+    "longitude": "-79.41537890000001",
+    "stationId": 114,
+    "address": "12 Canterbury Place"
+  },
+  {
+    "latitude": "43.7743653",
+    "longitude": "-79.34064239999998",
+    "stationId": 115,
+    "address": "115 Parkway Forest Drive"
+  },
+  {
+    "latitude": "43.7686475",
+    "longitude": "-79.36902900000001",
+    "stationId": 116,
+    "address": "255 Esther Shiner Boulevard"
+  },
+  {
+    "latitude": "43.7484528",
+    "longitude": "-79.4066502",
+    "stationId": 121,
+    "address": "10 William Carson Crescent"
+  },
+  {
+    "latitude": "43.74855469999999",
+    "longitude": "-79.38363429999998",
+    "stationId": 122,
+    "address": "2545 Bayview Avenue"
+  },
+  {
+    "latitude": "43.7459129",
+    "longitude": "-79.3467215",
+    "stationId": 123,
+    "address": "143 Bond Avenue"
+  },
+  {
+    "latitude": "43.7211541",
+    "longitude": "-79.3492321",
+    "stationId": 125,
+    "address": "1109 Leslie Street"
+  },
+  {
+    "latitude": "43.72621300000001",
+    "longitude": "-79.40203300000002",
+    "stationId": 131,
+    "address": "3135 Yonge Street<"
+  },
+  {
+    "latitude": "43.7197939",
+    "longitude": "-79.4286444",
+    "stationId": 132,
+    "address": "476 Lawrence Avenue West"
+  },
+  {
+    "latitude": "43.707269",
+    "longitude": "-79.4822944",
+    "stationId": 133,
+    "address": "1505 Lawrence Avenue West"
+  },
+  {
+    "latitude": "43.7096089",
+    "longitude": "-79.39977909999999",
+    "stationId": 134,
+    "address": "16 Montgomery Avenue"
+  },
+  {
+    "latitude": "43.703086",
+    "longitude": "-79.4187384",
+    "stationId": 135,
+    "address": "325 Chaplin Crescent"
+  },
+  {
+    "latitude": "43.76566560000001",
+    "longitude": "-79.4914786",
+    "stationId": 141,
+    "address": "4100 Keele Street"
+  },
+  {
+    "latitude": "43.74602350000001",
+    "longitude": "-79.51441090000003",
+    "stationId": 142,
+    "address": "2753 Jane Street"
+  },
+  {
+    "latitude": "43.7506444",
+    "longitude": "-79.45973959999998",
+    "stationId": 143,
+    "address": "1009 Sheppard Avenue West"
+  },
+  {
+    "latitude": "43.7447368",
+    "longitude": "-79.4864624",
+    "stationId": "144 (proposed)",
+    "address": "(proposed) Keele Street &amp; Sheppard Avenue West"
+  },
+  {
+    "latitude": "43.73471719999999",
+    "longitude": "-79.46022640000001",
+    "stationId": 145,
+    "address": "20 Beffort Road"
+  },
+  {
+    "latitude": "43.7236608",
+    "longitude": "-79.5093784",
+    "stationId": 146,
+    "address": "2220 Jane Street"
+  },
+  {
+    "latitude": "43.823946",
+    "longitude": "-79.24286760000001",
+    "stationId": 211,
+    "address": "900 Tapscott Road"
+  },
+  {
+    "latitude": "43.8047574",
+    "longitude": "-79.18870620000001",
+    "stationId": 212,
+    "address": "8500 Sheppard Ave East"
+  },
+  {
+    "latitude": "43.7949589",
+    "longitude": "-79.22553970000001",
+    "stationId": 213,
+    "address": "7 Lapsley Road"
+  },
+  {
+    "latitude": "43.793929",
+    "longitude": "-79.16363150000001",
+    "stationId": 214,
+    "address": "745 Meadowvale Road"
+  },
+  {
+    "latitude": "43.7771433",
+    "longitude": "-79.14779850000002",
+    "stationId": 215,
+    "address": "5318 Lawrence Avenue East"
+  },
+  {
+    "latitude": "43.73484439999999",
+    "longitude": "-79.25513509999996",
+    "stationId": 221,
+    "address": "2575 Eglinton Avenue East"
+  },
+  {
+    "latitude": "43.719593",
+    "longitude": "-79.2841669",
+    "stationId": 222,
+    "address": "755 Warden Avenue"
+  },
+  {
+    "latitude": "43.7238887",
+    "longitude": "-79.23308800000001",
+    "stationId": 223,
+    "address": "116 Dorset Road"
+  },
+  {
+    "latitude": "43.6950345",
+    "longitude": "-79.31678970000002",
+    "stationId": 224,
+    "address": "1313 Woodbine Avenue"
+  },
+  {
+    "latitude": "43.695398",
+    "longitude": "-79.26898030000001",
+    "stationId": 225,
+    "address": "3600 Danforth Avenue"
+  },
+  {
+    "latitude": "43.68195499999999",
+    "longitude": "-79.29903360000003",
+    "stationId": 226,
+    "address": "87 Main Street"
+  },
+  {
+    "latitude": "43.6691279",
+    "longitude": "-79.30495450000001",
+    "stationId": 227,
+    "address": "1904 Queen Street East"
+  },
+  {
+    "latitude": "43.7645448",
+    "longitude": "-79.22715649999998",
+    "stationId": 231,
+    "address": "740 Markham Road"
+  },
+  {
+    "latitude": "43.75504369999999",
+    "longitude": "-79.2666615",
+    "stationId": 232,
+    "address": "1550 Midland Road"
+  },
+  {
+    "latitude": "43.7439834",
+    "longitude": "-79.31439039999998",
+    "stationId": 233,
+    "address": "59 Curlew Drive<"
+  },
+  {
+    "latitude": "43.7611169",
+    "longitude": "-79.19146769999998",
+    "stationId": 234,
+    "address": "40 Coronation Drive"
+  },
+  {
+    "latitude": "43.7242555",
+    "longitude": "-79.31484849999998",
+    "stationId": 235,
+    "address": "200 Bermondsey Road"
+  },
+  {
+    "latitude": "43.8140924",
+    "longitude": "-79.32441770000003",
+    "stationId": 241,
+    "address": "3325 Warden Avenue"
+  },
+  {
+    "latitude": "43.8056811",
+    "longitude": "-79.27733139999998",
+    "stationId": 242,
+    "address": "2733 Brimley Road"
+  },
+  {
+    "latitude": "43.78880489999999",
+    "longitude": "-79.26277149999999",
+    "stationId": 243,
+    "address": "4560 Sheppard Avenue East"
+  },
+  {
+    "latitude": "43.7816233",
+    "longitude": "-79.298475",
+    "stationId": 244,
+    "address": "2340 Birchmount Road"
+  },
+  {
+    "latitude": "43.7627202",
+    "longitude": "-79.29152999999997",
+    "stationId": 245,
+    "address": "1600 Birchmount Road"
+  },
+  {
+    "latitude": "43.6858499",
+    "longitude": "-79.39369820000002",
+    "stationId": 311,
+    "address": "20 Balmoral Avenue"
+  },
+  {
+    "latitude": "43.67188099999999",
+    "longitude": "-79.38888500000002",
+    "stationId": 312,
+    "address": "34 Yorkville Avenue"
+  },
+  {
+    "latitude": "43.6724038",
+    "longitude": "-79.37557800000002",
+    "stationId": 313,
+    "address": "441 Bloor Street East"
+  },
+  {
+    "latitude": "43.66311",
+    "longitude": "-79.38461899999999",
+    "stationId": 314,
+    "address": "12 Grosvenor Street"
+  },
+  {
+    "latitude": "43.65674399999999",
+    "longitude": "-79.40473500000002",
+    "stationId": 315,
+    "address": "132 Bellevue Avenue"
+  },
+  {
+    "latitude": "43.7087645",
+    "longitude": "-79.36463960000003",
+    "stationId": 321,
+    "address": "231 McRae Drive"
+  },
+  {
+    "latitude": "43.6909133",
+    "longitude": "-79.34217749999999",
+    "stationId": 322,
+    "address": "256 Cosburn Avenue"
+  },
+  {
+    "latitude": "43.6795515",
+    "longitude": "-79.33466529999998",
+    "stationId": 323,
+    "address": "153 Chatham Avenue"
+  },
+  {
+    "latitude": "43.66778399999999",
+    "longitude": "-79.34347200000002",
+    "stationId": 324,
+    "address": "840 Gerrard Street East"
+  },
+  {
+    "latitude": "43.6593876",
+    "longitude": "-79.36510299999998",
+    "stationId": 325,
+    "address": "475 Dundas Street East"
+  },
+  {
+    "latitude": "43.66113799999999",
+    "longitude": "-79.32495289999997",
+    "stationId": 326,
+    "address": "30 Knox Avenue"
+  },
+  {
+    "latitude": "43.647293",
+    "longitude": "-79.40964199999996",
+    "stationId": 331,
+    "address": "33 Claremont Street"
+  },
+  {
+    "latitude": "43.648397",
+    "longitude": "-79.38953600000002",
+    "stationId": 332,
+    "address": "260 Adelaide Street West"
+  },
+  {
+    "latitude": "43.6504467",
+    "longitude": "-79.36622349999999",
+    "stationId": 333,
+    "address": "207 Front Street East"
+  },
+  {
+    "latitude": "43.6382447",
+    "longitude": "-79.38909860000001",
+    "stationId": 334,
+    "address": "339 Queens Quay West"
+  },
+  {
+    "latitude": "43.6251633",
+    "longitude": "-79.3591854",
+    "stationId": 335,
+    "address": "235 Cibola Avenue (Toronto Island)"
+  },
+  {
+    "latitude": "43.6945079",
+    "longitude": "-79.44116029999998",
+    "stationId": 341,
+    "address": "555 Oakwood Avenue"
+  },
+  {
+    "latitude": "43.679327",
+    "longitude": "-79.44862899999998",
+    "stationId": 342,
+    "address": "106 Ascot Avenue"
+  },
+  {
+    "latitude": "43.68011600000001",
+    "longitude": "-79.430703",
+    "stationId": 343,
+    "address": "65 Hendrick Avenue"
+  },
+  {
+    "latitude": "43.67297079999999",
+    "longitude": "-79.41182739999999",
+    "stationId": 344,
+    "address": "240 Howland Avenue"
+  },
+  {
+    "latitude": "43.667404",
+    "longitude": "-79.43811299999999",
+    "stationId": 345,
+    "address": "1285 Dufferin Street"
+  },
+  {
+    "latitude": "43.6336326",
+    "longitude": "-79.42138740000001",
+    "stationId": 346,
+    "address": "90 Quebec Street, Canadian National Exhibition"
+  },
+  {
+    "latitude": "43.75550399999999",
+    "longitude": "-79.54884770000001",
+    "stationId": 411,
+    "address": "75 Toryork Drive"
+  },
+  {
+    "latitude": "43.7381044",
+    "longitude": "-79.61790250000001",
+    "stationId": 412,
+    "address": "267 Humberline Drive"
+  },
+  {
+    "latitude": "43.74022699999999",
+    "longitude": "-79.5869376",
+    "stationId": 413,
+    "address": "1549 Albion Road"
+  },
+  {
+    "latitude": "43.717944",
+    "longitude": "-79.5704551",
+    "stationId": 415,
+    "address": "2120 Kipling Avenue"
+  },
+  {
+    "latitude": "43.68419360000001",
+    "longitude": "-79.48412309999998",
+    "stationId": 421,
+    "address": "6 Lambton Avenue"
+  },
+  {
+    "latitude": "43.6643442",
+    "longitude": "-79.4909695",
+    "stationId": 422,
+    "address": "590 Jane Street<"
+  },
+  {
+    "latitude": "43.6646971",
+    "longitude": "-79.46475240000001",
+    "stationId": 423,
+    "address": "358 Keele Street"
+  },
+  {
+    "latitude": "43.658335",
+    "longitude": "-79.479667",
+    "stationId": 424,
+    "address": "462 Runnymede Road"
+  },
+  {
+    "latitude": "43.6480256",
+    "longitude": "-79.47802790000003",
+    "stationId": 425,
+    "address": "83 Deforest Road"
+  },
+  {
+    "latitude": "43.64505980000001",
+    "longitude": "-79.43872899999997",
+    "stationId": 426,
+    "address": "140 Lansdowne Avenue"
+  },
+  {
+    "latitude": "43.64642680000001",
+    "longitude": "-79.50477089999998",
+    "stationId": 431,
+    "address": "308 Prince Edward Drive"
+  },
+  {
+    "latitude": "43.6232588",
+    "longitude": "-79.5493232",
+    "stationId": 432,
+    "address": "155 The East Mall"
+  },
+  {
+    "latitude": "43.6278851",
+    "longitude": "-79.50305660000004",
+    "stationId": 433,
+    "address": "615 Royal York Road"
+  },
+  {
+    "latitude": "43.6025767",
+    "longitude": "-79.54401999999999",
+    "stationId": 434,
+    "address": "3 Lunness Avenue"
+  },
+  {
+    "latitude": "43.60108289999999",
+    "longitude": "-79.50683470000001",
+    "stationId": 435,
+    "address": "130 Eighth Street"
+  },
+  {
+    "latitude": "43.69488659999999",
+    "longitude": "-79.5719542",
+    "stationId": 441,
+    "address": "947 Martin Grove Road"
+  },
+  {
+    "latitude": "43.7006023",
+    "longitude": "-79.51243439999996",
+    "stationId": 442,
+    "address": "2015 Lawrence Avenue West"
+  },
+  {
+    "latitude": "43.6780661",
+    "longitude": "-79.53857970000001",
+    "stationId": 443,
+    "address": "1724 Islington Avenue"
+  },
+  {
+    "latitude": "43.6574597",
+    "longitude": "-79.58267519999998",
+    "stationId": 444,
+    "address": "666 Renforth Drive"
+  },
+  {
+    "latitude": "43.6493781",
+    "longitude": "-79.54528140000002",
+    "stationId": 445,
+    "address": "280 Burnhamthorpe Road"
+  }
+]

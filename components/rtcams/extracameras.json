@@ -1,0 +1,47 @@
+{"Data":[
+  {
+    "Name":"Billy Bishop Airport - North",
+    "imgURL": "https://www.metcam.navcanada.ca/dawc_images/wxcam/CYTZ/CYTZ_N-full-e.jpeg?tstamp=%rand%",
+    "Latitude":"43.630590",
+    "Longitude":"-79.399440",
+    "Description":"https://www.metcam.navcanada.ca/lb/camera.jsp?lang=e&id=536",
+    "Group":"Airport",
+    "refreshMS":300000
+  },
+  {
+    "Name":"Billy Bishop Airport - East",
+    "imgURL": "https://www.metcam.navcanada.ca/dawc_images/wxcam/CYTZ/CYTZ_E-full-e.jpeg?tstamp=%rand%",
+    "Latitude":"43.630278",
+    "Longitude":"-79.399367",
+    "Description":"https://www.metcam.navcanada.ca/lb/camera.jsp?lang=e&id=67",
+    "Group":"Airport",
+    "refreshMS":300000
+  },
+  {
+    "Name":"Billy Bishop Airport - Southeast",
+    "imgURL": "https://www.metcam.navcanada.ca/dawc_images/wxcam/CYTZ/CYTZ_SE-full-e.jpeg?tstamp=%rand%",
+    "Description":"https://www.metcam.navcanada.ca/lb/camera.jsp?lang=e&id=68",
+    "Latitude":"43.630078",
+    "Longitude":"-79.399067",
+    "Group":"Airport",
+    "refreshMS":300000
+  },
+  {
+    "Name":"Billy Bishop Airport - Southwest",
+    "imgURL": "https://www.metcam.navcanada.ca/dawc_images/wxcam/CYTZ/CYTZ_SW-full-e.jpeg?tstamp=%rand%",
+    "Description":"https://www.metcam.navcanada.ca/lb/camera.jsp?lang=e&id=69",
+    "Latitude":"43.630285",
+    "Longitude":"-79.399890",
+    "Group":"Airport",
+    "refreshMS":300000
+  },
+  {
+    "Name":"Toronto City Hall - North from 65 Queen Street West",
+    "imgURL": "http://ki6948.myfoscam.org:8082/CGIProxy.fcgi?cmd=snapPicture2&usr=cam&pwd=beans18!&t=%rand%",
+    "Latitude":"43.65156365",
+    "Longitude":"-79.38226983526428",
+    "Description":"http://www.intrr.net/index.php",
+    "Group":"Office",
+    "refreshMS":3000
+  }
+]}

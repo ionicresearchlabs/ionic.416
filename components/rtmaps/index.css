@@ -1,0 +1,142 @@
+@import "../../index.css";
+
+html, body {
+  font-size: 1em;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+button {
+  width: 100%;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+a {
+  color: black;
+  background: white;
+  text-decoration: underline;
+  transition-duration: 0.3s;
+}
+
+a:hover {
+  color: white;
+  background: black;
+  text-decoration: none;
+}
+
+summary {
+  cursor: zoom-in;
+}
+
+details[open] > summary {
+  cursor: zoom-out;
+}
+
+.ol-popup {
+   position: absolute;
+   background-color: white;
+   color: black;
+   font-size: 0.7em;
+   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+   padding: 15px;
+   border-radius: 10px;
+   border: 1px solid #cccccc;
+   bottom: 12px;
+   left: -50px;
+   min-width: 280px;
+ }
+ .ol-popup:after, .ol-popup:before {
+   top: 100%;
+   border: solid transparent;
+   content: " ";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+ }
+ .ol-popup:after {
+   border-top-color: white;
+   border-width: 10px;
+   left: 48px;
+   margin-left: -10px;
+ }
+ .ol-popup:before {
+   border-top-color: #cccccc;
+   border-width: 11px;
+   left: 48px;
+   margin-left: -11px;
+ }
+ .ol-popup-closer {
+   text-decoration: none;
+   position: absolute;
+   top: 2px;
+   right: 8px;
+ }
+ .ol-popup-closer:after {
+   font-size: 1em;
+   font-weight: bolder;
+   content: "\2715";
+ }
+
+.ol-attribution {
+  font-size: 10px;
+}
+
+.ol-attribution a {
+  background-color: rgba(0,0,0,0);
+  color:#FFFFFF;
+  transition-duration: 0.3s;
+  text-decoration: none;
+}
+
+.ol-attribution a:hover {
+  background-color: rgba(255,255,255,1);
+  color:#000000;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.ol-attribution:not(.ol-collapsed) {
+  background-color: rgba(0,0,0,0.8);
+  color: #FFFFFF;
+}
+
+.ol-control button:focus, .ol-control button:hover {
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.8);
+    color:#FFFFFF;
+}
+
+.camera-name {
+  width:100%;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.camera-container {
+ width: 400px;
+ display: inline-block;
+}
+
+.street-view-link {
+  width: 50%;
+  text-align: left;
+  display: inline-block;
+}
+
+.camera-refresh-timer {
+  width: 50%;
+  text-align: right;
+  display: inline-block;
+}
+
+.ol-control button {
+  background-color: rgba(0,0,0,.8);
+}

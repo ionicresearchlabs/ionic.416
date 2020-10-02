@@ -1,0 +1,114 @@
+@import "../../index.css";
+
+html, body {
+  font-size: 1.5em;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+#target-time-header {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 0.4em;
+}
+
+#target-clock-container {
+  width: 100%;
+  overflow: visible;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+}
+
+#target-date-container {
+  width: 100%;
+  overflow: visible;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.4em;
+}
+
+#local-time-header {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 0.2em;
+}
+
+#local-clock-container {
+  width: 100%;
+  overflow: visible;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+}
+
+#local-date-container {
+  width: 100%;
+  overflow: visible;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.2em;
+}
+
+@media only screen and (max-width: 400px) {
+
+  #target-time-header {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+    font-size: 0.3em;
+  }
+
+  #target-clock-container {
+    width: 100%;
+    overflow: visible;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+  }
+
+  #target-date-container {
+    width: 100%;
+    overflow: visible;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.3em;
+  }
+
+  #local-time-header {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+    font-size: 0.2em;
+  }
+
+  #local-clock-container {
+    width: 100%;
+    overflow: visible;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.5em;
+  }
+
+  #local-date-container {
+    width: 100%;
+    overflow: visible;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.2em;
+  }
+
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="author" content="IONIC Research Labs, a division of TSG">
+  <title>IONIC Incident List & Search Component</title>
+  <script src="../../config.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="../../Messaging.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="../../Database.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="../../Geocoder.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <script src="index.js" type="text/javascript" language="javascript" charset="utf-8"></script>
+  <link href="index.css" rel="stylesheet" type="text/css" media="screen" charset="utf-8">
+  </link>
+</head>
+<body>
+  <div class="col-80 list" id="list-container"></div><div class="col-20 options" id="options">
+    <div id="statusDisplay">
+      <div>Progress: </div><div id="progress">0%</div><br/>
+      <div>Showing: </div><div id="displaying">0</div><br/>
+      <div>Total:</div><div id="total">0</div>
+    </div>
+    <div id="filters">
+      <hr>
+      <div id="header"><i class="fa fa-filter"></i>&nbsp;FILTERS</div>
+      <hr>
+      <div id="container" class="filters-container">
+        <input type="radio" value="none" name="filterOption" disabled="true" checked><label for="details">&nbsp;All</label><br>
+        <input type="radio" value="details" name="filterOption" disabled="true"><label for="details">&nbsp;Extended Details</label><br>
+        <input type="radio" value="type" name="filterOption" disabled="true"><label for="type">&nbsp;Type: </label><br>
+        <select id="typeOptions" value="type" group="filterOption" disabled></select>
+        <br>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

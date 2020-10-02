@@ -1,0 +1,108 @@
+@import "../../index.css";
+
+html, body {
+  font-size: 1em;
+  font-family: "IBM Plex Mono", monospace;
+  overflow: hidden;
+}
+
+* {
+box-sizing: border-box;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding-left: 100%;
+  box-sizing: content-box;
+  top:-19px;
+}
+.ticker-refresh {
+  width: 23px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ticker-refresh a {
+  text-decoration: none;
+	display: inline-block;
+	width: 23px;
+	height: 4rem;
+	font-size: 1.5em;
+	top: -7px;
+	position: absolute;
+	left: 0px;
+	z-index: 100000;
+	color: #FFF;
+  text-align: center;
+   background: rgba(5, 5, 0, 0.65);
+}
+.ticker-wrap .ticker {
+  display: inline-block;
+  height: 4rem;
+  line-height: 4rem;
+  white-space: nowrap;
+  padding-right: 100%;
+  box-sizing: content-box;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 150s;
+  animation-duration: 150s;
+}
+
+.ticker-wrap .ticker-item {
+  display: inline-block;
+  padding: 0 2rem;
+  font-size: 1.2em;
+  color: white;
+}
+
+.ticker-wrap .ticker-item a {
+  color:black;
+  text-decoration: none;
+  background-color: white;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.ticker-wrap .ticker-item a:hover {
+  color:white;
+  background-color: black;
+  text-decoration: underline;
+}
+
+.event-icon {
+  font-size: 1em;
+
+}
