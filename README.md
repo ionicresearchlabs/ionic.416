@@ -16,7 +16,7 @@ IONIC.416 is a collection of automated [client-side](https://en.wikipedia.org/wi
 
 The longer IONIC.416 is kept open and running, the more information it acquires. Textual data is stored in the browser's [built-in database](https://en.wikipedia.org/wiki/Indexed_Database_API) for easy retrieval, searching, sorting, analysis, visualization and so on.
 
-None of the standard IONIC.416 components require any special server, server-side scripts or additional installations. Tracking cookies are unnecessary. Advertising scripts do _not_ need to phone home. Everything is open-source and lives collaboratively in the browser, as nature intended.
+None of the standard IONIC.416 components require any special server, server-side scripts or additional installations. Everything is open-source and works collaboratively in the browser, as nature intended.
 
 ## GETTING THE LATEST VERSION
 
