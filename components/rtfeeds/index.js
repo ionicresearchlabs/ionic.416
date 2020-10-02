@@ -11,6 +11,8 @@ var mapMessaging = new Messaging("Map"); //"Map" messsaging channel
 
 var ticker = null; //Ticker instance
 var pauseTimeout = null; //current pause timeout object (as returned by setTimeout)
+var lastTickerRefresh = -1; //last time ticker was manually refreshed (UNIX epoch milliseconds)
+var manualTickerRefreshAllowed = 600000; //how often ticker is allowed to be refreshed manually
 //These could also be loaded externally:
 var feedSources = [
   {
@@ -171,7 +173,20 @@ async function updateTicker(event) {
 */
 async function refreshTickerData() {
   if (ticker == null) {
-    ticker=new Ticker("#ticker");
+    ticker = new Ticker("#ticker");
+  }
+  var now = new Date();
+  if (lastTickerRefresh < 0) {
+    lastTickerRefresh = now.getTime();
+  } else {
+    var delta = now.getTime() - lastTickerRefresh;
+    if (delta >= manualTickerRefreshAllowed) {
+      lastTickerRefresh = now.getTime();
+    } else {
+      var remaining = manualTickerRefreshAllowed - delta;
+      console.warn ("Manual feeds refresh blocked, "+Math.round(remaining / 1000)+" seconds until allowed.");
+      return (false);
+    }
   }
   ticker.update(["...loading..."]);
   for (var count=0; count < feedSources.length; count++) {

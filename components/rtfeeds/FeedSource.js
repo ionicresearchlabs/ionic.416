@@ -274,11 +274,6 @@ class FeedSource extends EventTarget {
             "url":"https://api.allorigins.win/get?url=",
             "action":"append",
             "encodeURIComponent":false
-          },
-          {
-            "url":"https://yacdn.org/proxy/",
-            "action":"append",
-            "encodeURIComponent":false
           }
         ]
       }
