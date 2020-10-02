@@ -134,7 +134,14 @@ class TorontoPoliceFeed extends FeedSource {
       var atScene = new Date(atSceneStr);
       var xStreets = currentEvent.attributes.XSTREETS;
       var mapLink = `<a href="#" onclick="onClickItem('TorontoPoliceFeed', '${caseId}');"><i class="fas fa-map-marker-alt"></i>&nbsp;${xStreets}</a>`;
-      var divisionLink = `<a href="http://www.torontopolice.on.ca/d${division}/" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;${division} division</a>`;
+      switch (division) {
+        case "HP":
+          var divisionLink = `<a href="http://www.torontopolice.on.ca/traffic/hp.php" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;Highway Patrol Jurisdiction</a>`;
+          break;
+        default:
+          divisionLink = `<a href="http://www.torontopolice.on.ca/d${division}/" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;${division} division</a>`;
+          break;
+      }
       Object.assign(dataObject.items, currentEvent);
       dataObject.id = caseId;
       dataObject.caseId = caseId;
