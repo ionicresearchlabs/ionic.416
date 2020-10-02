@@ -12,7 +12,7 @@ There's no sign-up.
 &nbsp;<br>
 ## HOW IT WORKS
 
-IONIC.416 is an integrated collection of automated [client-side](https://en.wikipedia.org/wiki/Client-side) open-source web components that gather, process and display real-time, near-real-time and historical public data feeds generated within and about the metropolitan area of Toronto, Canada.
+IONIC.416 is an open-source collection of automated [client-side](https://en.wikipedia.org/wiki/Client-side) web components that gather, process and display real-time, near-real-time and historical public data feeds generated within and about the metropolitan area of Toronto, Canada.
 
 The longer IONIC.416 is kept open and running, the more information it acquires. Textual data is stored in the browser's [built-in database](https://en.wikipedia.org/wiki/Indexed_Database_API) for easy retrieval, searching, sorting, analysis, visualization and so on.
 
