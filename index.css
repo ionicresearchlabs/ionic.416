@@ -164,6 +164,20 @@ button:hover {
   overflow-wrap: anywhere;
   float: left;
   display: inline-block;
+  /* position: -webkit-sticky;
+  position: sticky;*/
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+}
+
+.col-1-spacer {
+  width: 20%;
+  max-width:100%;
+  position: relative;
+  display: inline-block;
+  float: left;
   text-align: center;
 }
 
@@ -229,6 +243,7 @@ button:hover {
     width: 100%;
     float: left;
     display: inline-block;
+    position: relative;
   }
 
   .col-80 {

@@ -21,14 +21,34 @@
     </div>
     <div id="filters">
       <hr>
-      <div id="header"><i class="fa fa-filter"></i>&nbsp;FILTERS</div>
+      <div id="header"><i class="fa fa-filter"></i>&nbsp;FILTERS&nbsp;<i class="fa fa-filter"></i></div>
       <hr>
       <div id="container" class="filters-container">
         <input type="radio" value="none" name="filterOption" disabled="true" checked><label for="details">&nbsp;All</label><br>
         <input type="radio" value="details" name="filterOption" disabled="true"><label for="details">&nbsp;Extended Details</label><br>
         <input type="radio" value="type" name="filterOption" disabled="true"><label for="type">&nbsp;Type: </label><br>
         <select id="typeOptions" value="type" group="filterOption" disabled></select>
-        <br>
+        <input type="radio" id="distance" value="distance" name="filterOption" disabled="true"><label for="distance">&nbsp;Within: </label><br>
+        <div class="distance-container">
+          <input type="number" id="distance" name="distanceOption" step="0.25" value="1.25"> KM of ...
+        </div>
+        <div class="coordinates-container">
+          <label for="lon">LON:</label>
+          <input type="number" id="lon" name="lon" value="-79.3832">
+          <br/>
+          <label for="lat">LAT:</label>
+          <input type="number" id="lat" name="lat" value="43.6532">
+          <button id="getMapCoords" onclick="getMapClickCoordinates();">
+            <i class="fa fa-map-pin"></i><br/>
+            UPDATE COORDINATES
+            <br/>
+            FROM MAP CLICK
+          </button>
+          <button id="refreshDistanceFilter" onclick="refreshFilter('distance');">
+            <i class="fa fa-redo"></i><br/>
+            REFRESH LIST
+          </button>
+        </div>
       </div>
     </div>
   </div>

@@ -8,6 +8,8 @@
 
 var feedsMessaging = new Messaging("Feeds");
 var mapMessaging = new Messaging("Map");
+var appMessaging = new Messaging("Application");
+var db = new Database();
 var feedsReady = false;
 var activeRequests = new Array();
 var incidentsCache = new Array();
@@ -15,8 +17,8 @@ var incidentsHold = new Array(); //new or updated items added here during startu
 var incidentsVisible = 0;
 var startup = true;
 var currentSort = "dateDesc";
-var db = new Database();
 var activeFilter = "none";
+var onCaptureMapClick = null;
 
 /**
 * Event handler for inter-window / iframe messaging for the "Feeds" channel.
@@ -83,6 +85,28 @@ feedsMessaging.addEventListener("message", (event) => {
 })
 
 /**
+* Catches any messages status messages broadcast by the map
+*
+* @param {Object} requestObj The request object, containing at least a <code>status</code>
+* property defining the type of map status being reported.
+*/
+function onMapStatus(requestObj) {
+  switch (requestObj.status) {
+    case "mapclick":
+      if (onCaptureMapClick != null) {
+        onCaptureMapClick(requestObj)
+      }
+      onCaptureMapClick = null;
+      break;
+    default: break;
+  }
+}
+
+mapMessaging.addEventListener("message", (event) => {
+  onMapStatus(event.data);
+})
+
+/**
 * Adds handlers (listeners) for events dispatched by filters UI elements.
 */
 function addFilterUIHandlers() {
@@ -98,13 +122,9 @@ function addFilterUIHandlers() {
 * Enables the filters UI elements to allow user input.
 */
 function enableFilterUI() {
-  var radioButtons = document.querySelectorAll(`#filters > #container > input[type="radio"]`);
-  for (var count=0; count < radioButtons.length; count++) {
-    radioButtons[count].removeAttribute("disabled");
-  }
-  var selects = document.querySelectorAll(`#filters > #container > select`);
-  for (count=0; count < selects.length; count++) {
-    selects[count].removeAttribute("disabled");
+  var inputElements = document.querySelectorAll(`#filters input, #filters select, #filters button`);
+  for (var count=0; count < inputElements.length; count++) {
+    inputElements[count].removeAttribute("disabled");
   }
 }
 
@@ -112,13 +132,9 @@ function enableFilterUI() {
 * Disables the filters UI elements in order to block user input.
 */
 function disableFilterUI() {
-  var radioButtons = document.querySelectorAll(`#filters > #container > input[type="radio"]`);
-  for (var count=0; count < radioButtons.length; count++) {
-    radioButtons[count].setAttribute("disabled", "true");
-  }
-  var selects = document.querySelectorAll(`#filters > #container > select`);
-  for (count=0; count < selects.length; count++) {
-    selects[count].setAttribute("disabled", "true");
+  var inputElements = document.querySelectorAll(`#filters input, #filters select, #filters button`);
+  for (var count=0; count < inputElements.length; count++) {
+    inputElements[count].setAttribute("disabled", "true");
   }
 }
 
@@ -178,13 +194,36 @@ async function onFilterUIChange(elementType, element, event) {
 }
 
 /**
+* Refreshes a filter is it's currently active.
+*
+* @param {String} filterName The currently active filter name. If this
+* doesn't match the currently active filter name, nothing happens.
+*
+* @return {Boolean} True if the specified filter is active and the filter
+* was applied, false otherwise.
+* @async
+*/
+async function refreshFilter(filterName) {
+  if (activeFilter != filterName) {
+    return (false);
+  }
+  var tempFilter = activeFilter;
+  activeFilter = null; //temporarily disable any / all filters
+  disableFilterUI();
+  await applyFilter(filterName, null);
+  activeFilter = tempFilter; //restore active filter
+  enableFilterUI();
+  return (true);
+}
+
+/**
 * Determines if a cached item is currently being filtered (usually by a filters UI
 * setting).
 *
 * @param {Object} cacheItem The cached item to examine.
 *
-* @return {Boolean} True of the cached item is currently being filteres (should not be
-* displayed), true otherwise (should be displayed).
+* @return {Boolean} True of the cached item is currently being filtered (should not be
+* displayed), true otherwise (item may be displayed).
 */
 async function isFiltered(cacheItem) {
   var result = await applyFilter(activeFilter, cacheItem)
@@ -285,6 +324,47 @@ async function applyFilter(filterType, cacheItem=null) {
         }
       }
       break;
+    case "distance":
+      try {
+        var targetDistance = Number(document.querySelector(`#filters > #container > .distance-container > #distance`).value);
+        var longitude = Number(document.querySelector(`#filters > #container > .coordinates-container > #lon`).value);
+        var latitude = Number(document.querySelector(`#filters > #container > .coordinates-container > #lat`).value);
+        var geocoder = new Geocoder();
+        if (dataItem != null) {
+          var itemCoords = dataItem.location;
+          var incidentDistance = geocoder.distanceCoords (itemCoords.latitude, itemCoords.longitude, latitude, longitude, "km", precision=2);
+          if (incidentDistance <= targetDistance) {
+            return (false);
+          } else {
+            return (true);
+          }
+        } else {
+          for (count=0; count < incidentsCache.length; count++) {
+            var currentIncident = incidentsCache[count];
+            var dataItem = currentIncident.dataItem;
+            var itemCoords = dataItem.location;
+            var incidentDistance = geocoder.distanceCoords (itemCoords.latitude, itemCoords.longitude, latitude, longitude, "km", precision=2);
+            if (incidentDistance <= targetDistance) {
+              if (currentIncident.element.style.display != "inline-block") {
+                incidentsVisible++;
+              }
+              currentIncident.element.style.display = "inline-block";
+            } else {
+              if (currentIncident.element.style.display != "none") {
+                incidentsVisible--;
+              }
+              currentIncident.element.style.display = "none";
+            }
+            updateProgressStatus((count+1),cacheSize);
+            updateVisibleStatus(incidentsVisible);
+            await waitDelay(1);
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+      break;
+    default: break;
   }
   return (true);
 }
@@ -827,6 +907,28 @@ function openStreetViewWindow(url) {
   requestObj.request = "openStreetViewWindow"; //use the map component to actually open a window
   requestObj.url = url;
   mapMessaging.broadcast(requestObj);
+}
+
+/**
+* Invoked by button click in distance filter.
+*/
+function getMapClickCoordinates() {
+  disableFilterUI();
+  appMessaging.broadcast({request: "scrollTo", selector: "#map"});
+  onCaptureMapClick = onCaptureMapCoordinates;
+}
+
+/**
+* Invoked by click on map after <code>getMapClickCoordinates</code> is called.
+*/
+function onCaptureMapCoordinates(statusObj) {
+  appMessaging.broadcast({request: "scrollTo", selector: "#incidentlist"});
+  var coordinates = statusObj.coordinates;
+  var lonElement = document.querySelector(`#filters > #container > .coordinates-container > #lon`);
+  var latElement = document.querySelector(`#filters > #container > .coordinates-container > #lat`);
+  lonElement.value = coordinates.longitude;
+  latElement.value = coordinates.latitude;
+  enableFilterUI();
 }
 
 feedsMessaging.broadcast({request:"isReady"});

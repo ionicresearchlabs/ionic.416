@@ -418,6 +418,7 @@ function addMapHandlers() {
   for (var count=0; count<maps.length; count++) {
     var map = maps[count];
     map.on('click', function (evt) {
+      var coordLonLat = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
       var feature = maps[0].forEachFeatureAtPixel(evt.pixel, function (feature) {
         return feature;
       });
@@ -433,6 +434,12 @@ function addMapHandlers() {
         content.innerHTML = "";
         element.style.visibility = "hidden";
       }
+      var msg = new Object();
+      msg.status = "mapclick";
+      msg.coordinates = new Object();
+      msg.coordinates.longitude = coordLonLat[0];
+      msg.coordinates.latitude = coordLonLat[1];
+      messaging.broadcast(msg);
     });
     map.on('pointermove', function (evt) {
       var feature = maps[0].forEachFeatureAtPixel(evt.pixel, function (feature) {
@@ -443,7 +450,6 @@ function addMapHandlers() {
     //  hideAllOverlays(map);
     });
   }
-
 }
 
 /**

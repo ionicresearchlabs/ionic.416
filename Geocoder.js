@@ -236,7 +236,7 @@ class Geocoder {
   * @param {Number} lon2 The decimal longitude of the second point
   * @param {String} [resultUnits="km"] The distance units to return the resulting distance in. Valid
   * values include "km" (or standard variants), or "mi" (or standard variants).
-  * @param {Number} [precision=2] The roudned decimal precision to calculate the distance to.
+  * @param {Number} [precision=2] The rounded decimal precision to calculate the distance to.
   *
   * @return {Number} The calculated distance between the two points.
   */
@@ -249,8 +249,8 @@ class Geocoder {
     var dlon =lon2 - lon1;
     var dlat = lat2 - lat1;
     var a = Math.pow(Math.sin(dlat / 2), 2)
-             + Math.cos(lat1) * Math.cos(lat2)
-             * Math.pow(Math.sin(dlon / 2),2);
+            + Math.cos(lat1) * Math.cos(lat2)
+            * Math.pow(Math.sin(dlon / 2),2);
     var c = 2 * Math.asin(Math.sqrt(a));
     resultUnits = resultUnits.toLowerCase().split(" ").join("");
     switch (resultUnits) {

@@ -182,7 +182,7 @@ class TorontoPoliceNewsFeed extends FeedSource {
               var newsHTML = newsItem.detailsHTML;
               dataItem.details.news.push (newDetailItem);
               if (dataItem.detailsHTML == null) {
-                dataItem.detailsHTML = newsHTML;
+                dataItem.detailsHTML = `<hr>${newsHTML}`;
               } else {
                 dataItem.detailsHTML += `<hr>${newsHTML}`;
               }
@@ -194,7 +194,7 @@ class TorontoPoliceNewsFeed extends FeedSource {
               this.messaging.broadcast(updateObj);
             } else {
               //console.log ("Item has already been updated with latest details. Skipping.");
-              //console.dir(dataItem);
+              //console.dir S(dataItem);
             }
           } else {
             //console.log ("No such entry in police feed");

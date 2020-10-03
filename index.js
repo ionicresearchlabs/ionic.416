@@ -7,11 +7,37 @@
 */
 
 var mapsMessaging = new Messaging("Map"); //Maps component messaging channel
+var appMessaging = new Messaging("Application"); //Application (main) component messaging channel.
 
 mapsMessaging.addEventListener("message", (event) => {
   onMapRequest(event.data);
 })
 
+appMessaging.addEventListener("message", (event) => {
+  processAppRequest(event.data);
+})
+
+/**
+* Processes an application (main) request, usually made by a contained component.
+*
+* @param {Object} requestObj The request object, containing at least a <code>request</code>
+* property defining the type of application request being made.
+*/
+function processAppRequest(requestObj) {
+  switch (requestObj.request) {
+    case "scrollTo":
+      scrollPageTo(requestObj.selector);
+      break;
+    default: break;
+  }
+}
+
+/**
+* Catches any broadcast messages that target the map component and require it to be in focus..
+*
+* @param {Object} requestObj The request object, containing at least a <code>request</code>
+* property defining the type of map request being made.
+*/
 function onMapRequest(requestObj) {
   switch (requestObj.request) {
     case "zoom":
@@ -48,7 +74,6 @@ function scrollPageTo(selector) {
   });
 }
 
-
-
 window.onload = function() {
+
 }
