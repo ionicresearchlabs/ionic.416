@@ -11,9 +11,14 @@
   width: 100%;
 }
 
-.list > #list {
-  width: 0%;
+#list {
+  width: 0px;
+  height: 0px;
   visibility: hidden;
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px
 }
 
 .list-item {
@@ -223,6 +228,18 @@ hr {
   font-size: 10px;
 }
 
+#options {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.options-spacer {
+  display: inline-block;
+  width: 0px;
+  display: none;
+}
+
 #options > #statusDisplay {
   font-size: 11px;
   display: inline-block;
@@ -251,6 +268,7 @@ hr {
     width: 70%;
     display: inline-block;
   }
+
 }
 
 
@@ -271,6 +289,16 @@ hr {
     width: 100%;
     display: inline-block;
   }
+
+  #options {
+    position:relative;
+    display: inline-block;
+  }
+
+  .options-spacer {
+    display: inline-block;
+    width: inherit;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -285,6 +313,16 @@ hr {
   .list {
     margin-top: -10px;
     margin-bottom: 100px;
+  }
+
+  #options {
+    position:relative;
+    display: inline-block;
+  }
+
+  .options-spacer {
+    display: inline-block;
+    width: inherit;
   }
 
 }

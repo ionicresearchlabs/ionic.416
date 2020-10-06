@@ -95,7 +95,7 @@ function scrollComponentPageTo(componentSelector, selector, includeComponent=fal
   iframeDocument.querySelector(selector).scrollIntoView({
     behavior:"smooth",
     block:"start",
-    inline:"start"
+    inline:"nearest"
   });
 }
 
