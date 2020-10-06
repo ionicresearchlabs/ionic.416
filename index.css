@@ -236,27 +236,6 @@ button:hover {
 .timeline-Widget {
   background-color: #000000;
 }
-/*
-@media only screen and (max-width: 1240px) {
-
-  .col-20 {
-    float: left;
-    width: 29%;
-    display: inline-block;
-  }
-
-  .col-80 {
-    float: left;
-    width: 70%;
-    display: inline-block;
-  }
-
-  .component-container {
-    width: 100%;
-  }
-
-}
-*/
 
 @media only screen and (max-width: 1200px) {
 
@@ -276,7 +255,7 @@ button:hover {
      vertical-align: middle;
      cursor: pointer;
      transition-duration: 0.3s;
-     font-size: 1.75vw;
+     font-size: 1.5vw;
      word-wrap: break-word;
    }
 
@@ -284,63 +263,30 @@ button:hover {
      width: 100%;
    }
 }
-/*
-@media only screen and (max-width: 800px) {
 
-  [class*="col-"] {
-    width: 100%;
-    float: left;
-    display: inline-block;
-    position: relative;
-  }
-
-  .col-20 {
-    float: left;
-    width: 29%;
-    display: inline-block;
-  }
-
-  .col-80 {
-    float: left;
-    width: 70%;
-    display: inline-block;
-  }
+@media only screen and (max-width: 1000px) {
 
    .flex div {
-     flex: 1;
-     width: 20%;
-     background-color: white;
-     color: black;
-     display: table-cell;
-     vertical-align: middle;
-     cursor: pointer;
-     transition-duration: 0.3s;
-     font-size: 1.85vw;
+     font-size: 1.75vw;
      word-wrap: break-word;
    }
- }
 
+}
+
+@media only screen and (max-width: 800px) {
+
+   .flex div {
+     font-size: 2vw;
+     word-wrap: break-word;
+   }
+
+}
 
 @media only screen and (max-width: 600px) {
 
-  [class*="col-"] {
-    width: 100%;
-    float: left;
-    display: inline-block;
-    position: relative;
-  }
-
    .flex div {
-     flex: 1;
-     width: 20%;
-     background-color: white;
-     color: black;
-     display: table-cell;
-     vertical-align: middle;
-     cursor: pointer;
-     transition-duration: 0.3s;
      font-size: 3vw;
      word-wrap: break-word;
    }
- }
-*/
+
+}

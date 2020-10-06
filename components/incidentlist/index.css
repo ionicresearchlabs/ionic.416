@@ -72,6 +72,7 @@ button:disabled {
 /*  position: fixed;
   top: 0px;
   margin-left: 15px; */
+  width: 29%;
   display: inline-block;
 }
 
@@ -237,6 +238,22 @@ hr {
   display: inline-block;
 }
 
+@media only screen and (max-width: 1200px) {
+
+  .col-20 {
+    float: left;
+    width: 29%;
+    display: inline-block;
+  }
+
+  .col-80 {
+    float: left;
+    width: 70%;
+    display: inline-block;
+  }
+}
+
+
 @media only screen and (max-width: 800px) {
 
   .list {
@@ -256,7 +273,7 @@ hr {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
 
   [class*="col-"] {
     width: 100%;
