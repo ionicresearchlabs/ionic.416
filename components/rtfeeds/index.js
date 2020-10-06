@@ -139,9 +139,9 @@ function onLoadFeedSource(source, sourcesList, promise, scriptElement) {
 async function updateTicker(event) {
   var messages = new Array();
   var now = new Date();
-  var nowMS = now.getTime();
-  var limitHours = 1;
-  var limitMS = limitHours * 60 * 60 * 1000;
+  now.setHours(now.getHours()-1); //limit items to within last hour
+//now.setMinutes(now.getMinutes()-30); //limit items to within last half hour
+  var limitMS = now.getTime();
   for (var count=0; count < feedSources.length; count++) {
     var currentSource = feedSources[count];
     var currentInstance = currentSource.instance;
@@ -149,9 +149,9 @@ async function updateTicker(event) {
       if (currentInstance.latestData != null) {
         for (var count2=0; count2 < currentInstance.latestData.length; count2++) {
           var dataItem = currentInstance.latestData[count2];
-          if (dataItem.datetime.id != null) {
+          if (dataItem.datetime.event != null) {
             var itemMS = dataItem.datetime.event.getTime();
-            if (Math.abs(nowMS-itemMS) <= limitMS) {
+            if (itemMS > limitMS) {
               var summaryHTML = await currentInstance.resolveDetailsHTML(dataItem, "summary");
               messages.push(summaryHTML);
             }
