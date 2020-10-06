@@ -236,8 +236,29 @@ button:hover {
 .timeline-Widget {
   background-color: #000000;
 }
-
+/*
 @media only screen and (max-width: 1240px) {
+
+  .col-20 {
+    float: left;
+    width: 29%;
+    display: inline-block;
+  }
+
+  .col-80 {
+    float: left;
+    width: 70%;
+    display: inline-block;
+  }
+
+  .component-container {
+    width: 100%;
+  }
+
+}
+*/
+
+@media only screen and (max-width: 1200px) {
 
   [class*="col-"] {
     width: 100%;
@@ -246,13 +267,6 @@ button:hover {
     position: relative;
   }
 
-  .component-container {
-    width: 100%;
-  }
-
-}
-
-@media only screen and (max-width: 1000px) {
    .flex div {
      flex: 1;
      width: 20%;
@@ -265,9 +279,33 @@ button:hover {
      font-size: 1.75vw;
      word-wrap: break-word;
    }
-}
 
+   #comp_rtcams {
+     width: 100%;
+   }
+}
+/*
 @media only screen and (max-width: 800px) {
+
+  [class*="col-"] {
+    width: 100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+
+  .col-20 {
+    float: left;
+    width: 29%;
+    display: inline-block;
+  }
+
+  .col-80 {
+    float: left;
+    width: 70%;
+    display: inline-block;
+  }
+
    .flex div {
      flex: 1;
      width: 20%;
@@ -284,6 +322,14 @@ button:hover {
 
 
 @media only screen and (max-width: 600px) {
+
+  [class*="col-"] {
+    width: 100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+
    .flex div {
      flex: 1;
      width: 20%;
@@ -297,3 +343,4 @@ button:hover {
      word-wrap: break-word;
    }
  }
+*/
