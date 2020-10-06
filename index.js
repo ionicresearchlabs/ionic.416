@@ -28,6 +28,9 @@ function processAppRequest(requestObj) {
     case "scrollTo":
       scrollPageTo(requestObj.selector);
       break;
+    case "scrollComponentTo":
+      scrollComponentPageTo(requestObj.componentSelector, requestObj.selector);
+      break;
     default: break;
   }
 }
@@ -74,6 +77,27 @@ function scrollPageTo(selector) {
   });
 }
 
-window.onload = function() {
 
+
+/**
+* Smooth-scrolls a component's page page to the top of a contained specified element.
+*
+* @param {String} componentSelector The selector of the component (iframe) to target.
+* @param {String} selector The selector of the inner element to scroll the component swindow to.
+* @param {Boolean} [includeComponent=false] If true, the main application window will also scroll to the
+* component.
+*/
+function scrollComponentPageTo(componentSelector, selector, includeComponent=false) {
+  if (includeComponent == true) {
+    scrollPageTo(componentSelector);
+  }
+  var iframeDocument = document.querySelector(componentSelector).contentWindow.document;
+  iframeDocument.querySelector(selector).scrollIntoView({
+    behavior:"smooth",
+    block:"start",
+    inline:"start"
+  });
+}
+
+window.onload = function() {
 }

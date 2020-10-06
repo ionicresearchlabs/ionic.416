@@ -55,7 +55,7 @@ html, body {
 }
 
 .header-sub {
-  font-size: 1.1em;
+  font-size: 2em;
   margin-bottom: 15px;
 }
 
@@ -89,7 +89,7 @@ a:hover {
 
 .contact-info {
   line-height: 0px;
-  font-size: 0.8em;
+  font-size: 2.5vw;
   font-style: italic;
   width: 100%;
   text-align: center;
@@ -97,7 +97,7 @@ a:hover {
 
 .repo-link {
   line-height: 0px;
-  font-size: 0.8em;
+  font-size: 2.5vw;
   font-style: italic;
   width: 100%;
   text-align: center;

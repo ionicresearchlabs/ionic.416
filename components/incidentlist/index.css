@@ -2,10 +2,11 @@
 
 .list {
   background-color: black;
+  margin-bottom: 100px;
+  margin-top: 10px;
 }
 
 .list-item {
-  width: 100%;
   word-wrap: break-word;
   font-size: 0.75em;
   background-image: linear-gradient(#303030, #000000);
@@ -57,9 +58,10 @@ button:disabled {
 }
 
 .options {
-  position: fixed;
+/*  position: fixed;
   top: 0px;
-  margin-left: 15px;
+  margin-left: 15px; */
+  display: inline-block;
 }
 
 #filters {
@@ -76,14 +78,13 @@ button:disabled {
   font-size: 12px;
 }
 
-#typeOptions {
-  width: 90%;
-  margin-top: 5px;
-  margin-bottom: 5px;
+#link-container {
+  width 100%;
 }
 
+
 #typeOptions {
-  width: 90%;
+  width: 50%;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -155,12 +156,11 @@ hr {
 
 .coordinates-container > label {
   display: inline-block;
-  width: 10%;
 }
 
 .coordinates-container > input {
   display: inline-block;
-  width: 60%;
+  width: 50%;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 5px;
@@ -168,8 +168,8 @@ hr {
 
 .coordinates-container > button {
   display: inline-block;
-  width: 90%;
-  font-size: 1.25vw;
+  width: 100%;
+  font-size: 14px;
   height: 60px;
   margin-top: 5px;
   padding-top: 5px;
@@ -178,8 +178,9 @@ hr {
 }
 
 #refreshDistanceFilter {
+  width: 100%;
   height: 40px;
-  font-size: 1.1vw;
+  font-size: 12px;
 }
 
 @keyframes stroke-color-pulse {
@@ -210,7 +211,70 @@ hr {
   font-size: 10px;
 }
 
-#options > #statusDisplay > div {
+#options > #statusDisplay {
   font-size: 11px;
   display: inline-block;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(1,1,1,.75));
 }
+
+#options > #statusDisplay > div {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1240px) {
+
+  .col-20 {
+    width: 100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+
+  .col-80 {
+    width: 98vw;
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+
+}
+
+@media only screen and (max-width: 900px) {
+
+  [class*="col-"] {
+    width: 98vw;
+    float: left;
+    display: inline-block;
+    position: relative;
+  }
+
+}
+
+
+@media only screen and (max-width: 1000px) {
+   .flex div {
+     flex: 1;
+     width: 20%;
+     background-color: white;
+     color: black;
+     display: table-cell;
+     vertical-align: middle;
+     cursor: pointer;
+     transition-duration: 0.3s;
+     font-size: 1.75vw;
+     word-wrap: break-word;
+   }
+}
+
+@media only screen and (max-width: 800px) {
+
+ }
+
+
+@media only screen and (max-width: 600px) {
+
+ }

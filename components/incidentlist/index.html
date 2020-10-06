@@ -13,24 +13,26 @@
   </link>
 </head>
 <body>
-  <div class="col-80 list" id="list-container"></div><div class="col-20 options" id="options">
+  <div class="col-20 options" id="options">
     <div id="statusDisplay">
-      <div>Progress: </div><div id="progress">0%</div><br/>
-      <div>Showing: </div><div id="displaying">0</div><br/>
-      <div>Total:</div><div id="total">0</div>
+      <a id="status"></a>
+      <span>Progress: </span><span id="progress">0%</span><br/>
+      <span>Showing: </span><span id="displaying">0</span><br/>
+      <span>Total:</span><span id="total">0</span>
     </div>
     <div id="filters">
+      <a id="filters"></a>
       <hr>
       <div id="header"><i class="fa fa-filter"></i>&nbsp;FILTERS&nbsp;<i class="fa fa-filter"></i></div>
       <hr>
       <div id="container" class="filters-container">
         <input type="radio" value="none" name="filterOption" disabled="true" checked><label for="details">&nbsp;All</label><br>
         <input type="radio" value="details" name="filterOption" disabled="true"><label for="details">&nbsp;Extended Details</label><br>
-        <input type="radio" value="type" name="filterOption" disabled="true"><label for="type">&nbsp;Type: </label><br>
-        <select id="typeOptions" value="type" group="filterOption" disabled></select>
-        <input type="radio" id="distance" value="distance" name="filterOption" disabled="true"><label for="distance">&nbsp;Within: </label><br>
+        <input type="radio" value="type" name="filterOption" disabled="true"><label for="type">&nbsp;Type: </label><br/>
+        <select id="typeOptions" value="type" group="filterOption" disabled></select><br/>
+        <input type="radio" id="distance" value="distance" name="filterOption" disabled="true"><label for="distance">&nbsp;Within: </label><br/>
         <div class="distance-container">
-          <input type="number" id="distance" name="distanceOption" step="0.25" value="1.25"> KM of ...
+          <input type="number" id="distance" name="distanceOption" step="0.25" value="1.25"> KM of ...<br/>
         </div>
         <div class="coordinates-container">
           <label for="lon">LON:</label>
@@ -48,8 +50,15 @@
             <i class="fa fa-redo"></i><br/>
             REFRESH LIST
           </button>
+          <br/>
         </div>
       </div>
+    </div>
+  </div>
+  <br/>
+  <div class="col-80">
+    <a id="list"></a>
+    <div class="list" id="list-container">
     </div>
   </div>
 </body>

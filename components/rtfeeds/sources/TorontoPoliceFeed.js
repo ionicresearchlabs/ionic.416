@@ -138,6 +138,9 @@ class TorontoPoliceFeed extends FeedSource {
         case "HP":
           var divisionLink = `<a href="http://www.torontopolice.on.ca/traffic/hp.php" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;Highway Patrol Jurisdiction</a>`;
           break;
+        case "PSU":
+          divisionLink = `<a href="https://www.torontopolice.on.ca/publicsafetyoperations/" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;Public Safety Unit Jurisdiction</a>`;
+          break;
         default:
           divisionLink = `<a href="http://www.torontopolice.on.ca/d${division}/" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;${division} division</a>`;
           break;

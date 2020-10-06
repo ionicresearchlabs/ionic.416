@@ -662,7 +662,7 @@ async function updateIncidentList(cacheItem, type="append", targetElement=null) 
   if (filterItem == true) {
     element.style.display = "none";
   } else {
-    element.style.display = "inline-block";
+    element.style.display = "block";
   }
   var detailsHTML = cacheItem.detailsHTML;
   detailsHTML = detailsHTML.split(`<summary>`).join(`<summary>${incidentHeader(cacheItem)}`);

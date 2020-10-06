@@ -24,7 +24,7 @@
     <div class="col-2">
       <div class="col-full"><a id="ticker"><iframe class="frame" id="comp_rtfeeds" src="components/rtfeeds/" width="100%" height="25"></iframe></a></div>
       <div class="col-80"><a id="map"><iframe class="frame" id="comp_rtmaps" src="components/rtmaps/" width="100%" height="540"></iframe></a></div>
-      <div class="col-20"><iframe class="frame" id="comp_rtcams" src="components/rtcams/" width="100%" height="95"></iframe></div>
+      <div class="col-20"><a id="cameras"><iframe class="frame" id="comp_rtcams" src="components/rtcams/" width="100%" height="95"></iframe></a></div>
       <div class="col-20"><a id="livedispatch"><iframe class="frame" id="comp_rtradio" src="components/rtradio/" width="100%" height="435"></iframe></a></div>
       <div class="col-full"><a id="incidentlist"><iframe class="frame" id="comp_incidentlist" src="components/incidentlist/" width="100%" height="580"></iframe></a></div>
     </div>
@@ -34,7 +34,11 @@
         <div onclick="scrollPageTo('#ticker')"><i class="fa fa-chevron-left"></i>&nbsp;TICKER</div>
         <div onclick="scrollPageTo('#map')"><i class="fa fa-map"></i>&nbsp;MAP</div>
         <div onclick="scrollPageTo('#livedispatch')"><i class="fa fa-satellite-dish"></i>&nbsp;LIVE DISPATCH</div>
-        <div onclick="scrollPageTo('#incidentlist')"><i class="fa fa-th-list"></i>&nbsp;INCIDENT LIST</div>
+      </div>
+      <div class="flex">
+        <div onclick="scrollPageTo('#cameras')"><i class="fa fa-camera"></i>&nbsp;LIVE CAMERAS</div>
+        <div onclick="scrollComponentPageTo('#comp_incidentlist', '#status', true)"><i class="fa fa-filter"></i>&nbsp;FILTERS</div>
+        <div onclick="scrollComponentPageTo('#comp_incidentlist', '#list', true)"><i class="fa fa-th-list"></i>&nbsp;INCIDENT LIST</div>
         <div id="about-menu-item" onclick="openAboutWindow()"> <i class="fa fa-question"></i> </div>
       </div>
     </div>
