@@ -91,7 +91,7 @@ class TorontoPoliceTwitterFeed extends FeedSource {
               } else {
                 dataItem.detailsHTML += `<hr>`;
               }
-              dataItem.detailsHTML += `${publishedDateTime}<br/><a href="${currentTweetURL}" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;${currentTweetURL}</a><br/><br/>${currentTweetHTML}`;
+              dataItem.detailsHTML += `<p>${publishedDateTime}<br/><a href="${currentTweetURL}" target="_blank"><i class="fas fa-external-link-alt"></i>&nbsp;${currentTweetURL}</a><br/><br/>${currentTweetHTML}</p>`;
               await this.db.updateById (dataItem.id, dataItem, "TorontoPoliceFeed");
               var updateObj = new Object();
               updateObj.status = "updateItem";

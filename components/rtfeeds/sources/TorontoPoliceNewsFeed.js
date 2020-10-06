@@ -182,9 +182,9 @@ class TorontoPoliceNewsFeed extends FeedSource {
               var newsHTML = newsItem.detailsHTML;
               dataItem.details.news.push (newDetailItem);
               if (dataItem.detailsHTML == null) {
-                dataItem.detailsHTML = `<hr>${newsHTML}`;
+                dataItem.detailsHTML = `<hr><p>${newsHTML}</p>`;
               } else {
-                dataItem.detailsHTML += `<hr>${newsHTML}`;
+                dataItem.detailsHTML += `<hr><p>${newsHTML}</p>`;
               }
               await this.db.updateById (dataItem.id, dataItem, "TorontoPoliceFeed");
               var updateObj = new Object();
