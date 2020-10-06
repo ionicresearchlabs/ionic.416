@@ -9,6 +9,7 @@
 
 .list > #list-container {
   width: 100%;
+  overflow-x: hidden;
 }
 
 #list {
@@ -22,7 +23,7 @@
 }
 
 .list-item {
-  width: 100%;
+  width: 99%;
   word-wrap: break-word;
   font-size: 0.75em;
   background-image: linear-gradient(#303030, #000000);
@@ -269,6 +270,10 @@ hr {
     display: inline-block;
   }
 
+  #typeOptions {
+    width: 98%;
+  }
+
 }
 
 
@@ -299,6 +304,11 @@ hr {
     display: inline-block;
     width: inherit;
   }
+
+  #typeOptions {
+    width: 98%;
+  }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -323,6 +333,10 @@ hr {
   .options-spacer {
     display: inline-block;
     width: inherit;
+  }
+
+  #typeOptions {
+    width: 98%;
   }
 
 }
