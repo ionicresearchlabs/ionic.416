@@ -17,7 +17,7 @@ class TorontoPoliceNewsFeed extends FeedSource {
   constructor() {
     super();
     this.feeds["TorontoPoliceNewsFeed"] = this;
-    console.log (`Created ${this.toString()}`);
+    //console.log (`Created ${this.toString()}`);
   }
 
   /**

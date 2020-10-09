@@ -17,7 +17,7 @@ class TorontoFireFeed extends FeedSource {
   constructor() {
     super();
     this.feeds["TorontoFireFeed"] = this;
-    console.log (`Created ${this.toString()}`);
+    //console.log (`Created ${this.toString()}`);
   }
 
   /**

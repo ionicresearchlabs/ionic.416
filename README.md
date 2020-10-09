@@ -1,22 +1,15 @@
-<img align="left" src="https://user-images.githubusercontent.com/71984462/94849242-1ccc0100-03f3-11eb-81d8-d29bd1d3fbed.jpg">
+<img src="https://user-images.githubusercontent.com/71984462/94849242-1ccc0100-03f3-11eb-81d8-d29bd1d3fbed.jpg">
 
-# IONIC.416
+# **IONIC.416**
 
-### _[Click here to use IONIC.416 right now](https://ionicresearchlabs.github.io/ionic.416/)_
+### _[CLICK HERE TO USE IONIC.416 RIGHT NOW](https://ionicresearchlabs.github.io/ionic.416/)_
 There's no sign-up.
-&nbsp;<br>
-&nbsp;<br>
-&nbsp;<br>
-&nbsp;<br>
-&nbsp;<br>
-&nbsp;<br>
+
 ## HOW IT WORKS
 
-IONIC.416 is a collection of automated [client-side](https://en.wikipedia.org/wiki/Client-side) web components that gather, process and display real-time, near-real-time and historical public data feeds generated within and about the metropolitan area of Toronto, Canada.
+IONIC.416 is a collection of integrated components that gather, process and display service request calls (Police / Fire / Medical), and other open-source and public data feeds generated within and about the metropolitan area of Toronto, Canada.
 
-The longer IONIC.416 is kept open and running, the more information it acquires. Textual data is stored in the browser's [built-in database](https://en.wikipedia.org/wiki/Indexed_Database_API) for easy retrieval, searching, sorting, analysis, visualization and so on.
-
-None of the standard IONIC.416 components require any special server installation, server-side scripts or additional software. Everything is included and it all works collaboratively in the browser, as nature intended.
+IONIC.416 runs entirely in the browser, automatically and continuously gathering data while running, storing processed information in the browser's [built-in database](https://en.wikipedia.org/wiki/Indexed_Database_API).
 
 ## GETTING THE LATEST VERSION
 
