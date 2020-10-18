@@ -13,6 +13,7 @@ var db = new Database();
 var feedsReady = false;
 var activeRequests = new Array();
 var incidentsCache = new Array();
+var cacheIds = new Object(); //id-mapped items currently in the incidentsCache
 var incidentsHold = new Array(); //new or updated items added here during startup
 var incidentsVisible = 0;
 var startup = true;
@@ -464,7 +465,7 @@ async function updateIncident(source, dataItem) {
 
 /**
 * Adds a new existing to the internal <code>incidentsCache</code> and the UI.
-* No duplication checking is attempted.
+* Any duplicate items (by <code>id</code>), per source are rejected and false is returned.
 *
 * @param {String} source The feeds source that the associated data item belongs to
 * (e.g."TorontoPoliceFeed").
@@ -474,11 +475,18 @@ async function updateIncident(source, dataItem) {
 * @async
 */
 async function addNewIncident(source, dataItem) {
+  if ((cacheIds[source] == undefined) || (cacheIds[source] == null)) {
+    cacheIds[source] = new Object();
+  }
+  if ((cacheIds[source][dataItem.id] != undefined) && (cacheIds[source][dataItem.id] != null)) {
+    return (false);
+  }
   var insertObj = new Object();
   insertObj.dataItem = dataItem;
   insertObj.source = source;
   insertObj.detailsHTML = await getDetailsHTML(dataItem, source);
   insertObj.element = null;
+  cacheIds[source][dataItem.id] = insertObj;
   if (currentSort == "dateDesc") {
     var precedingIndex = getNewestIndexBefore(insertObj, incidentsCache);
     if (precedingIndex > 0) {
