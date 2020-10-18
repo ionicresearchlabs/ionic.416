@@ -9,7 +9,7 @@
 window.usingISS = true;
 window.ISSProxy = function() {
   var proxyObj = new Object();
-  proxyObj.url = "/proxy/?url=";
+  proxyObj.url = "/api/proxy/?url=";
   proxyObj.action = "append";
   proxyObj.encodeURIComponent = true;
   return (proxyObj);

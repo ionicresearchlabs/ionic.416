@@ -213,7 +213,6 @@ class TorontoPoliceFeed extends FeedSource {
         })
         var eventObj = new Event("onload");
         eventObj.source = this;
-        this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
         if (async == true) {
           resolve(eventObj);
         } else {
@@ -221,6 +220,7 @@ class TorontoPoliceFeed extends FeedSource {
         }
       })
     })
+    this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
     return (promise);
   }
 

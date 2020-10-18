@@ -123,9 +123,9 @@ class TorontoPoliceTwitterFeed extends FeedSource {
         var event = new Event("onload");
         event.source = this;
         resolve (event);
-        this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
       })
     })
+    this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
     return (promise);
   }
 

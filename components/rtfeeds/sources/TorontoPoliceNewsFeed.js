@@ -317,7 +317,6 @@ class TorontoPoliceNewsFeed extends FeedSource {
         var onParseEvent = new Event("onparse");
         this.dispatchEvent(onParseEvent);
       })
-      this.refresh (this.load.bind(this, customURL, async, bypassCache), 1800000);
     };
     if (customURL == null) {
       var url = "http://torontopolice.on.ca/newsreleases/rss.php";
@@ -329,6 +328,7 @@ class TorontoPoliceNewsFeed extends FeedSource {
       url = customURL;
     }
     rss.load("GET", this.proxify(url));
+    this.refresh (this.load.bind(this, customURL, async, bypassCache), 1800000);
     return (promise);
   }
 

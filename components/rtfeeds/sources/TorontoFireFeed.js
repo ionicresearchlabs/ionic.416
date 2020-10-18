@@ -401,7 +401,6 @@ class TorontoFireFeed extends FeedSource {
         var onParseEvent = new Event("onparse");
         this.dispatchEvent(onParseEvent);
       })
-      this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
     });
     if (customURL == null) {
       var url = "https://www.toronto.ca/data/fire/livecad.xml";
@@ -414,6 +413,7 @@ class TorontoFireFeed extends FeedSource {
     }
     xhr.open("GET", this.proxify(url));
     xhr.send();
+    this.refresh (this.load.bind(this, customURL, async, bypassCache), 300000);
     return (promise);
   }
 

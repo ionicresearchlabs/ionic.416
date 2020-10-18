@@ -276,6 +276,7 @@ async function applyFilter(filterType, cacheItem=null) {
           return (true);
         }
       } else {
+        var changed = 0;
         for (var count=0; count < incidentsCache.length; count++) {
           var currentIncident = incidentsCache[count];
           if ((currentIncident.dataItem.details != undefined) && (currentIncident.dataItem.details != null)) {
@@ -285,6 +286,7 @@ async function applyFilter(filterType, cacheItem=null) {
             currentIncident.element.style.display = "inline-block";
           } else {
             if (currentIncident.element.style.display != "none") {
+              changed++;
               incidentsVisible--;
             }
             currentIncident.element.style.display = "none";
@@ -662,7 +664,7 @@ async function updateIncidentList(cacheItem, type="append", targetElement=null) 
   if (filterItem == true) {
     element.style.display = "none";
   } else {
-    element.style.display = "block";
+    element.style.display = "inline-block";
   }
   var detailsHTML = cacheItem.detailsHTML;
   detailsHTML = detailsHTML.split(`<summary>`).join(`<summary>${incidentHeader(cacheItem)}`);
