@@ -2,7 +2,7 @@
 * @file Manages the functionality of the IONIC incidents list component.
 *
 * @author IONIC Research Labs, a division of TSG.
-* @version 0.1.0
+* @version 0.2.0
 * @copyright MIT License
 */
 
@@ -16,6 +16,8 @@ var incidentsCache = new Array();
 var cacheIds = new Object(); //id-mapped items currently in the incidentsCache
 var incidentsHold = new Array(); //new or updated items added here during startup
 var incidentsVisible = 0;
+var delayDisableNum = 10; //number of items to process before applying timeout delay (e.g. when building list)
+var delayDisableCount = 0; //counter used with delayDisableNum
 var startup = true;
 var currentSort = "dateDesc";
 var activeFilter = "none";
@@ -277,7 +279,6 @@ async function applyFilter(filterType, cacheItem=null) {
           return (true);
         }
       } else {
-        var changed = 0;
         for (var count=0; count < incidentsCache.length; count++) {
           var currentIncident = incidentsCache[count];
           if ((currentIncident.dataItem.details != undefined) && (currentIncident.dataItem.details != null)) {
@@ -287,7 +288,6 @@ async function applyFilter(filterType, cacheItem=null) {
             currentIncident.element.style.display = "inline-block";
           } else {
             if (currentIncident.element.style.display != "none") {
-              changed++;
               incidentsVisible--;
             }
             currentIncident.element.style.display = "none";
@@ -478,6 +478,7 @@ async function addNewIncident(source, dataItem) {
   if ((cacheIds[source] == undefined) || (cacheIds[source] == null)) {
     cacheIds[source] = new Object();
   }
+  console.log ("Adding to : "+source+" "+dataItem.id)
   if ((cacheIds[source][dataItem.id] != undefined) && (cacheIds[source][dataItem.id] != null)) {
     return (false);
   }
@@ -601,16 +602,22 @@ async function loadIncidents(dbName, sources) {
     if (currentSource.ticker == true) {
       //only include display sources
       var objectStoreName = currentSource.class; //assume store name is same as class name
+      if ((cacheIds[objectStoreName] == undefined) || (cacheIds[objectStoreName] == null)) {
+        cacheIds[objectStoreName] = new Object();
+      }
       var searchResults = await db.search ("{", "*", objectStoreName); //return everything since all JSON objects will contain "{"
       for (var count2 = 0; count2 < searchResults.length; count2++) {
         var dataItem = searchResults[count2];
-        var detailsHTML = await getDetailsHTML(dataItem, objectStoreName);
-        var cacheObj = new Object();
-        cacheObj.dataItem = dataItem;
-        cacheObj.source = searchResults;
-        cacheObj.detailsHTML = detailsHTML;
-        cacheObj.element = null;
-        incidentsCache.push(cacheObj);
+        if ((cacheIds[objectStoreName][dataItem.id] == undefined) || (cacheIds[objectStoreName][dataItem.id] == null)) {
+          var detailsHTML = await getDetailsHTML(dataItem, objectStoreName);
+          var cacheObj = new Object();
+          cacheObj.dataItem = dataItem;
+          cacheObj.source = searchResults;
+          cacheObj.detailsHTML = detailsHTML;
+          cacheObj.element = null;
+          incidentsCache.push(cacheObj);
+          cacheIds[objectStoreName][dataItem.id] = cacheObj;
+        }
       }
     }
   }
@@ -721,7 +728,13 @@ async function updateIncidentList(cacheItem, type="append", targetElement=null) 
 */
 function waitDelay(ms=1) {
   var promise = new Promise((resolve, reject) => {
-    setTimeout(resolve, ms);
+    delayDisableCount++;
+    if (delayDisableCount >= delayDisableNum) {
+      delayDisableCount = 0;
+      setTimeout(resolve, ms, true);
+    } else {
+      resolve(true);
+    }
   })
   return (promise);
 }
