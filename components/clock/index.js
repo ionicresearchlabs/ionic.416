@@ -6,6 +6,8 @@
 * @copyright MIT License
 */
 
+var timezoneOffset = -4; //updated after getCurrentTimeOffset call below
+
 /**
 * Continuously displays the target and local dates / times on a 500ms timer.
 */
@@ -28,8 +30,8 @@ function refreshTime() {
     month: "long",
     day: "numeric"
   }
-  targetTimeContainer.innerHTML = calculateTZOffset(-4).toLocaleTimeString(locale, timeOptions);
-  targetDateContainer.innerHTML = calculateTZOffset(-4).toLocaleDateString(locale, dateOptions);
+  targetTimeContainer.innerHTML = calculateTZOffset(timezoneOffset).toLocaleTimeString(locale, timeOptions);
+  targetDateContainer.innerHTML = calculateTZOffset(timezoneOffset).toLocaleDateString(locale, dateOptions);
   localTimeContainer.innerHTML = now.toLocaleTimeString(locale, timeOptions);
   localDateContainer.innerHTML = now.toLocaleDateString(locale, dateOptions);
   var t = setTimeout(refreshTime, 500);
@@ -38,8 +40,8 @@ function refreshTime() {
 /**
 * Calculates the current time at a specific timezone offset and returns the result.
 *
-* @param {Number} offset The timezone offset relative to GTM. For example, -4 is
-* Eastern Standard Time.
+* @param {Number} offset The timezone offset relative to GTM. No DST adjustment is
+* made during this calculation.
 *
 * @return {Date} The current date/time object at the specified timezone.
 */
@@ -50,6 +52,51 @@ function calculateTZOffset(offset) {
   return (offsetDate);
 }
 
+/**
+* Parses the current time zone offset from retrieved data. The returned data
+* is expected to be in a standardized JSON format containing a <code>utc_offset</code>
+* property.
+*
+* @param {Event} event A XMLHTTPRequest response event.
+*
+*/
+function parseCurrentTimeOffset(event) {
+  try {
+    var responseStr = event.target.responseText;
+    var response = JSON.parse(responseStr);
+    var tzOffset = parseInt(response.utc_offset.split(":")[0]);
+    event.target._resolve(tzOffset);
+  } catch (err) {
+    event.target._reject(err);
+  }
+}
+
+/**
+* Retrieves the current timezone offset for a location, including DST adjustments, from an
+* external API.
+*
+* @param {String} [url="http://worldtimeapi.org/api/timezone/America/Toronto"] The API to
+* to call to retrieve the adjusted timezone. Default is url is for Toronto, Canada.
+*
+* @return {Promise} Resolves with a number representing the current, DST-adjusted timezone offset
+* (from UTC), or rejects with an error.
+*/
+function getCurrentTimeOffset(url="http://worldtimeapi.org/api/timezone/America/Toronto") {
+  var promise = new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr._resolve = resolve;
+    xhr._reject = reject;
+    xhr.overrideMimeType("application/json");
+    xhr.addEventListener("load", parseCurrentTimeOffset);
+    xhr.open("GET", url);
+    xhr.send();
+  });
+  return (promise);
+}
+
 window.onload = () => {
-  refreshTime();
+  getCurrentTimeOffset().then(result => {
+    timezoneOffset = result;
+    refreshTime();
+  })
 }
