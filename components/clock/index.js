@@ -75,13 +75,13 @@ function parseCurrentTimeOffset(event) {
 * Retrieves the current timezone offset for a location, including DST adjustments, from an
 * external API.
 *
-* @param {String} [url="http://worldtimeapi.org/api/timezone/America/Toronto"] The API to
+* @param {String} [url="https://worldtimeapi.org/api/timezone/America/Toronto"] The API to
 * to call to retrieve the adjusted timezone. Default is url is for Toronto, Canada.
 *
 * @return {Promise} Resolves with a number representing the current, DST-adjusted timezone offset
 * (from UTC), or rejects with an error.
 */
-function getCurrentTimeOffset(url="http://worldtimeapi.org/api/timezone/America/Toronto") {
+function getCurrentTimeOffset(url="https://worldtimeapi.org/api/timezone/America/Toronto") {
   var promise = new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr._resolve = resolve;
