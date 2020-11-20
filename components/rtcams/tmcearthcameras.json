@@ -295,5 +295,5 @@ jsonTMCEarthCamerasCallback({"Data":[
 {"Number":"9404","Name":"W R ALLEN RD & LAWRENCE AVE W @ 51m NORTH OF","Latitude":"43.716458","Longitude":"-79.44479","D1":"n","D2":"e","D3":"s","D4":"w","Group":"Allen","refreshMS":300000},
 {"Number":"9405","Name":"W R ALLEN RD & 401 C E ALLEN RD RAMP @ 150m SOUTH OF","Latitude":"43.728143","Longitude":"-79.448634","D1":"n","D2":"e","D3":"s","D4":"w","Group":"Allen","refreshMS":300000},
 {"Number":"9406","Name":"W R ALLEN RD & TRANSIT RD @ 280m SOUTH OF","Latitude":"43.739609","Longitude":"-79.45257","D1":"n","D2":"","D3":"s","D4":"","Group":"Allen","refreshMS":300000},
-{"Number":"9407","Name":"W R ALLEN RD & SHEPPARD AVE W","Latitude":"43.749974","Longitude":"-79.463592","D1":"n","D2":"e","D3":"s","D4":"w","Group":"Allen","refreshMS":300000},
+{"Number":"9407","Name":"W R ALLEN RD & SHEPPARD AVE W","Latitude":"43.749974","Longitude":"-79.463592","D1":"n","D2":"e","D3":"s","D4":"w","Group":"Allen","refreshMS":300000}
 ]});
