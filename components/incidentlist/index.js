@@ -478,7 +478,6 @@ async function addNewIncident(source, dataItem) {
   if ((cacheIds[source] == undefined) || (cacheIds[source] == null)) {
     cacheIds[source] = new Object();
   }
-  console.log ("Adding to : "+source+" "+dataItem.id)
   if ((cacheIds[source][dataItem.id] != undefined) && (cacheIds[source][dataItem.id] != null)) {
     return (false);
   }
@@ -951,7 +950,21 @@ function onCaptureMapCoordinates(statusObj) {
   var latElement = document.querySelector(`#filters > #container > .coordinates-container > #lat`);
   lonElement.value = coordinates.longitude;
   latElement.value = coordinates.latitude;
+  //save proximity filter settings
+  window.settings.save ("incidentlist", "filters", "proximity_coordinates", coordinates);
   enableFilterUI();
 }
+
+window.onload = () => {
+  //restore previously stored proximity filter settings
+  var coordinates = window.settings.load ("incidentlist", "filters", "proximity_coordinates");
+  if (coordinates != null) {
+    var lonElement = document.querySelector(`#filters > #container > .coordinates-container > #lon`);
+    var latElement = document.querySelector(`#filters > #container > .coordinates-container > #lat`);
+    lonElement.value = coordinates.longitude;
+    latElement.value = coordinates.latitude;
+  }
+}
+
 
 feedsMessaging.broadcast({request:"isReady"});
