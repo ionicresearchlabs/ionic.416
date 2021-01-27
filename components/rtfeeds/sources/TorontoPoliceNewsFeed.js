@@ -118,7 +118,9 @@ class TorontoPoliceNewsFeed extends FeedSource {
     try {
       var detailsHTML = event.target.responseText;
       var sourceDetailsHTML = sourceItem.items.description.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
-      var caseId = detailsHTML.split("Case #: ")[1].split("<br>")[0];
+      //case ID is between "<strong>Case #:</strong>" and next immediate "<br>"
+      var caseId = detailsHTML.split("<strong>Case #:</strong>")[1].split("<br>")[0];
+      caseId = caseId.split("\r").join("").split("\n").join("");
       var byLine = detailsHTML.split("<hr>")[1].split("</div>")[0];
       byLine = byLine.split("\r").join("").split("\n").join("");
       var itemDetailsHTML = `Case #: ${caseId}<br/>${sourceDetailsHTML}<br/>${byLine}`;
