@@ -266,11 +266,6 @@ class FeedSource extends EventTarget {
       } else {
         this._proxyList = [
           {
-            "url":"https://cors-anywhere.herokuapp.com/",
-            "action":"append",
-            "encodeURIComponent":false
-          },
-          {
             "url":"https://api.allorigins.win/get?url=",
             "action":"append",
             "encodeURIComponent":false
