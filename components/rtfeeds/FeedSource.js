@@ -266,7 +266,7 @@ class FeedSource extends EventTarget {
       } else {
         this._proxyList = [
           {
-            "url":"https://api.allorigins.win/get?url=",
+            "url":"https://api.allorigins.win/raw?url=",
             "action":"append",
             "encodeURIComponent":false
           }
