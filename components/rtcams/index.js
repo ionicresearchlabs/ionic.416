@@ -2,7 +2,7 @@
 * @file Manages the functionality of the IONIC real-time cameras (rtcams) component.
 *
 * @author IONIC Research Labs, a division of TSG.
-* @version 0.1.0
+* @version 0.2.0
 * @copyright MIT License
 */
 
@@ -107,8 +107,9 @@ function parseRESCUCamsList(event) {
   for (var count=0; count < obj.Data.length; count++) {
     var dataItem = obj.Data[count];
     var name = `${dataItem.Name}`;
-    var imgURL = cameraImageUrl.split("%Number%").join(dataItem.Number);
+    var camURL = cameraImageUrl.split("%Number%").join(dataItem.Number);
     var group = `RESCU/${dataItem.Group}`;
+    var type = "image";
     refreshMS = dataItem.refreshMS;
     name += ` (${group})`;
     var description = `https://www.toronto.ca/services-payments/streets-parking-transportation/road-restrictions-closures/rescu-traffic-cameras/`;
@@ -116,7 +117,7 @@ function parseRESCUCamsList(event) {
       latitude: dataItem.Latitude,
       longitude: dataItem.Longitude
     };
-    addNewCamera(name, imgURL, group, description, location, refreshMS, false);
+    addNewCamera(name, camURL, group, type, description, location, refreshMS, false);
   }
   loadCamerasList("extracameras.json", parseExtraCamsList);
 }
@@ -132,8 +133,9 @@ function parseExtraCamsList(event) {
   for (var count=0; count < obj.Data.length; count++) {
     var dataItem = obj.Data[count];
     var name = `${dataItem.Name}`;
-    var imgURL = `${dataItem.imgURL}`;
+    var camURL = `${dataItem.camURL}`;
     var group = `OTHER/${dataItem.Group}`;
+    var type = `${dataItem.Type}`;
     var refreshMS = dataItem.refreshMS;
     name += ` (${group})`;
     var description = `${dataItem.Description}`;
@@ -141,16 +143,19 @@ function parseExtraCamsList(event) {
       latitude: dataItem.Latitude,
       longitude: dataItem.Longitude
     };
-    addNewCamera(name, imgURL, group, description, location, refreshMS, false);
+    addNewCamera(name, camURL, group, type, description, location, refreshMS, false);
   }
   refreshCamerasList();
 }
 
 /**
-* Adds a new camera to the global <code>cameras</code> list;
+* Adds a new camera to the global <code>cameras</code> list.
 *
 * @param {String} name The descriptive name of the camera to add.
-* @param {String} imgURL The URL of the camera image to load and refresh in subsequent operations.
+* @param {String} camURL The URL of the camera to load.
+* @param {String} [type="image"] The type of camera referenced by the URL. Valid types include:
+*    "image" (still image)
+*    ""
 * @param {String} [description=null] A desription of the camera (e.g. location name, special features, etc.)
 * @param {Object} [location=null] An object containing the <code>latitude</code> and <code>longitude</code> properties,
 * in decimal degrees, of the camera's location.
@@ -158,11 +163,12 @@ function parseExtraCamsList(event) {
 * @param {Boolean} [addFirst=false] If true, the camera is added to the beginning of the list, otherwise it's added
 * to the end.
 */
-function addNewCamera(name, imgURL, group, description=null, location=null, refreshMS=300000, addFirst=false) {
+function addNewCamera(name, camURL, group, type="image", description=null, location=null, refreshMS=300000, addFirst=false) {
   var cameraObj = new Object();
   cameraObj.name = name;
-  cameraObj.imgURL = imgURL;
+  cameraObj.camURL = camURL;
   cameraObj.group = group;
+  cameraObj.type = type;
   cameraObj.description = description;
   cameraObj.location = location;
   cameraObj.refreshMS = refreshMS;
@@ -226,8 +232,8 @@ function cameraRefresh(elementSelector, refreshMS, refreshURL, control) {
   } else {
     var refreshTimeStr = `--:--:--`;
     displayElement.innerHTML = refreshTimeStr;
-    var imgURL = refreshURL.split("%rand%").join(Math.floor(Math.random()*Number.MAX_SAFE_INTEGER));
-    imgElement.setAttribute("src", imgURL);
+    var camURL = refreshURL.split("%rand%").join(Math.floor(Math.random()*Number.MAX_SAFE_INTEGER));
+    imgElement.setAttribute("src", camURL);
   }
 }
 
@@ -248,14 +254,14 @@ function refreshCamerasList(elementSelector="#camerasList") {
     marker.longitude = camera.location.longitude;
     marker.icon = `camera`;
     marker.content = `<span class="camera-name">${camera.name}</span>`;
-    var imgURL = camera.imgURL;
-    var baseImgURL = imgURL;
+    var camURL = camera.camURL;
+    var baseImgURL = camURL;
     var refreshMS = camera.refreshMS;
     var rndId = randomInteger();
-    imgURL = imgURL.split("%rand%").join(String(rndId));
+    camURL = camURL.split("%rand%").join(String(rndId));
     var streetViewHTML = `<span class="street-view-link"><a href="#" onclick="openStreetViewWindow('https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${marker.latitude},${marker.longitude}');"><i class="fas fa-street-view"></i>&nbsp;Google Maps Street View</a></span>`;
     var refreshTimerHTML = `<span id="refreshTimeDisplay" class="camera-refresh-timer"><a href="#" onclick='cameraRefresh("#camera${rndId}",${refreshMS},"${baseImgURL}","reset");'><i class="fas fa-redo"></i>&nbsp;Refresh in <span id="timeString">--:--:--</span></a></span>`;
-    marker.content += `<div class="camera-container"><img onload="cameraRefresh('#camera${rndId}',${refreshMS},'${baseImgURL}','start');" id="camera${rndId}" src="${imgURL}" width="100%" />${streetViewHTML}${refreshTimerHTML}</div>`;
+    marker.content += `<div class="camera-container"><img onload="cameraRefresh('#camera${rndId}',${refreshMS},'${baseImgURL}','start');" id="camera${rndId}" src="${camURL}" width="100%" />${streetViewHTML}${refreshTimerHTML}</div>`;
     cameraMarkers.push(marker);
     var optionHTML = `<option value="${count}">${camera.name}</option>`;
     selectHTML += optionHTML;
@@ -271,6 +277,89 @@ function refreshCamerasList(elementSelector="#camerasList") {
   requestObj.markers = cameraMarkers;
   mapMessaging.broadcast(requestObj);
   document.querySelector("#goToCameraButton").removeAttribute("disabled");
+}
+
+/**
+* Loads a data file asynchronously and returns the it as a base-64-encoded data
+* URL string.
+*
+* @param {String} url The URL of the data file to load. Standard CORS retrictions
+* apply.
+*
+* @return {Promise} Resolves with the loaded data file's base-64 representation,
+* or rejects with an error.
+* @async
+*/
+function fileToDURL(url){
+  var promise = new Promise((resolve, reject) => {
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open("get", url);
+      xhr.responseType = "blob";
+      xhr.onload = function(){
+        var fr = new FileReader();
+        fr.onload = function(){
+          resolve(this.result);
+        };
+        fr.onerror = function(err){
+          reject(err);
+        };
+        fr.readAsDataURL(xhr.response);
+      };
+      xhr.send();
+    } catch (err) {
+      reject (err);
+    }
+  });
+  return (promise)
+}
+
+/**
+* Exports arbitrary base-64 encoded data to an external file using the IONIC Service Server
+* or similar API.
+*
+* @param {String} b64Data The base-64 encoded data URL string to export.
+* @param {String} [serverFilePath=null] A custom server file path, including directories.
+* If not specified, a base file name of "file_export_#.data" is used, where "#" is the current
+* time, in milliseconds, in the UNIX epoch.
+* @param {String} [APIPath="/api/store"] The relative API path or full URL of the API endpoint
+* to POST the data to.
+*
+* @returns {Promise} Resolves whe the API endpoint reports successfully saving the export data,
+* or rejects with an error.
+* @async
+*/
+function exportToFile(b64Data, serverFilePath=null, APIPath = "/api/export/") {
+  var promise = new Promise((resolve, reject) => {
+    if (window.usingISS == false) {
+      var err = new Error("ISS required for file exports.");
+      reject (err);
+      return (err);
+    }
+    if (serverFilePath == null) {
+      var now = new Date();
+      var dtFileName = String(now.getTime());
+      serverFilePath = `file_export_${dtFileName}.data`;
+    }
+    var dataSplit = b64Data.split(",");
+    var dataHeaderless = dataSplit[1];
+    var contentType = dataHeaderless[0].split("data:").join("");
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", (event) => {
+      resolve(event);
+    });
+    xhr.addEventListener("error", (event) => {
+      console.dir(event.target);
+      reject(event);
+    });
+    xhr.open("POST", APIPath);
+    var postData = new FormData();
+    //The API receives the following two parameters as POST data:
+    postData.append("filename", serverFilePath);
+    postData.append("data_b64", dataHeaderless);
+    xhr.send(postData);
+  })
+  return (promise);
 }
 
 window.onload = function() {
