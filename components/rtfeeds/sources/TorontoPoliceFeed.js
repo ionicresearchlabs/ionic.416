@@ -53,8 +53,9 @@ class TorontoPoliceFeed extends FeedSource {
   * @private
   */
   async resolveDetailsHTML(dataItem, detailLevel="summary") {
-    var caseIdHTML = `<p>Case #<span style="font-weight:bold;">${dataItem.id}</span></p>`;
-    //var streetViewHTML = `<p><a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${dataItem.location.latitude},${dataItem.location.longitude}" target="_blank">Google Maps Street View</a></p>`;
+    //var caseIdHTML = `<p>Case #<span style="font-weight:bold;">${dataItem.id}</span></p>`;
+    //Data no longer contains valid case ID as of February 2022
+    var caseIdHTML = ``;
     var streetViewHTML = `<p><a href="#" onclick="openStreetViewWindow('https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${dataItem.location.latitude},${dataItem.location.longitude}');"><i class="fas fa-street-view"></i>&nbsp;Google Maps Street View</a></p>`;
     if (detailLevel == "details") {
       if (dataItem.detailsHTML == null) {
@@ -124,15 +125,17 @@ class TorontoPoliceFeed extends FeedSource {
     }
     for (var count=0; count < eventsData.length; count++) {
       var currentEvent = eventsData[count];
+      console.dir (currentEvent);
       var now = new Date();
       dataObject = this.newDataObject;
-      var caseId = `${now.getFullYear()}-${currentEvent.attributes.OBJECTID}`; //long format used in news feed
-      var division = currentEvent.attributes.DGROUP;
+      //var caseId = `${now.getFullYear()}-${currentEvent.attributes.OBJECTID}`; //long format used in news feed
+      //OBJECTID no longer contains the case ID (data point has been removed from feed)
+      var caseId = `c4s-${currentEvent.attributes.OCCURRENCE_TIME_AGOL}`;
+      var division = currentEvent.attributes.DIVISION;
       division = division.split("D").join("");
-      var atSceneStr = currentEvent.attributes.ATSCENE_TS;
-      atSceneStr = atSceneStr.split(".").join("-");
-      var atScene = new Date(atSceneStr);
-      var xStreets = currentEvent.attributes.XSTREETS;
+      var eventTime = new Date(currentEvent.attributes.OCCURRENCE_TIME_AGOL);
+      var atScene = new Date(currentEvent.attributes.OCCURRENCE_TIME_AGOL);
+      var xStreets = currentEvent.attributes.CROSS_STREETS;
       var mapLink = `<a href="#" onclick="onClickItem('TorontoPoliceFeed', '${caseId}');"><i class="fas fa-map-marker-alt"></i>&nbsp;${xStreets}</a>`;
       switch (division) {
         case "HP":
@@ -147,13 +150,13 @@ class TorontoPoliceFeed extends FeedSource {
       }
       Object.assign(dataObject.items, currentEvent);
       dataObject.id = caseId;
-      dataObject.caseId = caseId;
-      dataObject.type = currentEvent.attributes.TYP_ENG;
+      dataObject.caseId = null; //no longer available
+      dataObject.type = currentEvent.attributes.CALL_TYPE;
       dataObject.raw = JSON.stringify(currentEvent);
-      dataObject.datetime.event = atScene;
+      dataObject.datetime.event = eventTime;
       dataObject.location.latitude = currentEvent.geometry.y;
       dataObject.location.longitude = currentEvent.geometry.x;
-      dataObject.summaryHTML = `<span class="event-icon">&#x1F6A8;</span>&nbsp;${currentEvent.attributes.TYP_ENG} on ${mapLink} in ${divisionLink}; units on scene at ${atScene.toLocaleTimeString()}`;
+      dataObject.summaryHTML = `<span class="event-icon">&#x1F6A8;</span>&nbsp;${currentEvent.attributes.CALL_TYPE} on ${mapLink} in ${divisionLink} at ${atScene.toLocaleTimeString()}`;
       if (DBEnabled == true) {
         try {
           //do this async since additional details (e.g. Twitter), may need it to already exist
@@ -178,7 +181,7 @@ class TorontoPoliceFeed extends FeedSource {
     var dataObject = this.newDataObject;
     dataObject.summaryHTML = headerMsg;
     this.latestData.unshift (dataObject);
-    return (true)
+    return (true);
   }
 
   /**
@@ -191,7 +194,10 @@ class TorontoPoliceFeed extends FeedSource {
       if (customURL == null) {
         var jsonp = new JSONP();
         var callback = jsonp.uniqueCallback;
-        var url = "https://c4s.torontopolice.on.ca/arcgis/rest/services/CADPublic/C4S/MapServer/0/query";
+        //old url:
+        //var url = "https://c4s.torontopolice.on.ca/arcgis/rest/services/CADPublic/C4S/MapServer/0/query";
+        //new url (as of Feb 21, 2022):
+        var url = "https://services.arcgis.com/S9th0jAJ7bqgIRjw/arcgis/rest/services/C4S_Public_NoGO/FeatureServer/0/query";
         url += "?f=json"; //json result
         url += "&callback=" + callback; //use JSONP
         url += "&where=1%3D1";

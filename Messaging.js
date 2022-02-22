@@ -105,12 +105,16 @@ class Messaging extends EventTarget {
   }
 
   /**
-  * @property {Number} messageIndex An incremental index value that can be
-  * used by all instances to construct unique message identifiers.
+  * @property {Number} messageIndex A global read-incremental index value
+  * used to construct unique message identifiers.
   * @static
   * @private
+  * @readonly
   */
   static get messageIndex() {
+    if ((Messaging._messageIndex == undefined) || (Messaging._messageIndex == null)) {
+      Messaging._messageIndex = 0;
+    }
     Messaging._messageIndex++;
     return (Messaging._messageIndex);
   }
@@ -119,6 +123,7 @@ class Messaging extends EventTarget {
   * @property {String} randomMessageId A unique message identifier combining
   * a pseudo-random numeric value and [messageIndex]{@link Messaging#messageIndex}.
   * @private
+  * @readonly
   */
   get randomMessageId() {
     var randomInt = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
@@ -214,7 +219,7 @@ class Messaging extends EventTarget {
       window.localStorage.removeItem(this.channel); //otherwise it won't always update
       window.localStorage.setItem(this.channel, JSON.stringify(msgObj));
     } else {
-      throw (new Error(`Unrecognized or unsupported message broadcast mechanism ""${this._use}"`));
+      throw (new Error(`Unrecognized or unsupported message broadcast mechanism "${this._use}"`));
     }
     if (includeSelf == true) {
       var eventObj = new Event("message");
@@ -227,7 +232,7 @@ class Messaging extends EventTarget {
   * @private
   */
   toString() {
-    return (`[object Messaging ("${this.channel})]"`);
+    return (`[object Messaging "${this.channel}"]`);
   }
 
 }

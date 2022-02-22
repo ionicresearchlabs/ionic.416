@@ -39,7 +39,7 @@ class JSONP extends EventTarget {
   }
 
   /**
-  * Creates the default Twitter JSONP callbacks container object on
+  * Creates the default JSONP callbacks container object on
   * the <code>window</code> object if it doesn't already exist.
   * @private
   */
@@ -117,7 +117,6 @@ class JSONP extends EventTarget {
     } catch (err) {
     } finally {
       jsElementRef.remove(); //clean up <script> tag
-      callbackRef = null; //remove function reference
     }
   }
 
