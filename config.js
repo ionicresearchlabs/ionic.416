@@ -15,13 +15,16 @@ window.settings = new Object();
 
 window.settings.save = (componentName, settingsCategory, settingsName, settingsObj, version="416") => {
   var currentSettings = window.localStorage.getItem("IONIC");
-  if (currentSettings == null) {
+  if ((currentSettings == null) || (currentSettings == undefined)) {
     currentSettings = new Object();
   }
   if ((currentSettings[version] == undefined) || (currentSettings[version] == null)) {
     currentSettings[version] = new Object();
   }
   var versionObj = currentSettings[version];
+  if ((versionObj == undefined) || (versionObj == null)) {
+    versionObj = new Object();
+  }
   if ((versionObj[componentName] == undefined) || (versionObj[componentName] == null)) {
     versionObj[componentName] = new Object();
   }
